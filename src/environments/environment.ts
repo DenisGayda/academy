@@ -10,8 +10,8 @@ export const environment = {
     databaseURL: 'https://front-end-academy-2018.firebaseio.com',
     projectId: 'front-end-academy-2018',
     storageBucket: 'front-end-academy-2018.appspot.com',
-    messagingSenderId: '371768483478'
-  }
+    messagingSenderId: '371768483478',
+  },
 };
 
 /*
