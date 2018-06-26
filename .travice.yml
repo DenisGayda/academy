@@ -25,7 +25,7 @@ script:
 - ng build --prod --aot
 deploy:
   provider: firebase
-  project: "friendlychat-5ce86"
+  project: "front-end-academy-2018"
   skip_cleanup: true
   token:
     secure: N5zxTUyh/cTKXzObcUlCnWfyh17SlFlev/YX6W6MZ+D5tz2Atr1/MnbvI/W42Wtolbxj4gserMK0XXJHpXB9hRNap544hwAycy89tpSvtujf1pNCNbLYiNd2H+/WpdV7fVDaZom7AGxXP2imPoLAl9+0hwAhilU65qA1B9F9IhPWt3unyi/pmBTTBwCBUVZi4WkN+jEJ84zgKM1Jp8Ls0vtbWvPf/UFhNEeZ+b7iaOi4Qn5ywrZHDNQsnPhlNTbfErVLj2i7q5QIhzorcuL1gIPlOL3rAiNviybl4+0OnDpcK/kUam63hsOKmtqskFRkfj7JmX9yhPY9HeLKXgJxZtRZEQ8A4x9Qkxy0OiRGc14NKOeVF1hGZPxZm43PDUKhmc2Nhr6Iyspi8LtSZN3sCUo4EFrO0S5aS2YNLUNWiOGZ1GTMQDB0CwKs++o292nsBc7e0nEbSSFSnGvYoC0y3jPdjbQeBYdhdq5+pVWVC8Vpp4nDmRs3QYz94yPvpX5ZVvcl0PaPa2wTyp+BgZ3LHZknO5B5qkPvZTcWXYkcuF5cLF0/ms7UcSKRwv/VfzT2d75cfDfnvjfgUAXxKnQ7OqQUvn8CvoJ4hg4iNPLvGc/z10DFTlS2YiYLZoYW2fGGoZXRJ5ClfymP2zMhfqRuOLWVgSFdByce8Q9eFa82RyA=

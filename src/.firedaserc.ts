@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "friendlychat-5ce86"
+    "default": "front-end-academy-2018"
   }
 }
