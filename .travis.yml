@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '6.9'
+- '8.9'
 branches:
   only:
   - master
@@ -21,7 +21,7 @@ before_script:
 - npm install -g @angular/cli
 - npm install -g karma
 script:
-- karma start ./karma.conf.js --single-run
+- karma start ./src/karma.conf.js --single-run
 - ng build --prod --aot
 deploy:
   provider: firebase
