@@ -13,8 +13,10 @@ export class HomePageComponent implements OnInit {
   public txtPassword = '';
   public emailSearcher: FormControl;
   public passwordSearcher: FormControl;
+
   constructor(public afAuth: AngularFireAuth) {
   }
+
   ngOnInit(): void {
     this.emailSearcher = new FormControl('');
     this.passwordSearcher = new FormControl('');
@@ -25,6 +27,7 @@ export class HomePageComponent implements OnInit {
       this.txtPassword = value;
     });
   }
+
   public loginWithGoogle(): void {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
@@ -43,6 +46,7 @@ export class HomePageComponent implements OnInit {
       throw new Error(e);
     });
   }
+
   public signup(): void {
     const promise = this.afAuth.auth.createUserWithEmailAndPassword(this.txtEmail, this.txtPassword);
     promise.catch(e => {
