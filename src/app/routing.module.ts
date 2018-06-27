@@ -12,6 +12,9 @@ const appRoutes: Routes = [
     path: 'contents', loadChildren: './contents-page/contents-page.module#ContentsPageModule',
   },
   {
+    path: 'profile', loadChildren: './profile-page/profile-page.module#ProfilePageModule',
+  },
+  {
     path: '**', redirectTo: '/homepage',
   },
 ];
