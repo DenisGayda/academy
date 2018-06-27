@@ -7,6 +7,7 @@ import { RoutingModule } from './routing.module';
 import { FooterModule } from './footer/footer.module';
 
 import { AppComponent } from './app.component';
+import { HeaderModule } from './components/header/header.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,10 @@ import { AppComponent } from './app.component';
     AngularFireDatabaseModule,
     RoutingModule,
     FooterModule,
+    HeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
+
 export class AppModule { }

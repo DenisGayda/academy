@@ -1,0 +1,19 @@
+<div>
+  <div class="nav-container">
+    <div class="nav-links-сontainer">
+      <div class="link-item-block" *ngFor="let page of pagesLinks">
+        <a class="link-page" [routerLink]="page.url">{{page.name}}</a>
+      </div>
+      <div class="nav-dropdown-menu">
+        <button (click)="visible()" class="active-dropdown-button">Меню</button>
+      </div>
+    </div>
+  </div>
+  <div class="hidden_dropdown" [ngClass]="{ dropdown_container:dropdownVisible}">
+    <ul class="list-links-pages">
+      <li *ngFor="let page of pagesLinks" class="dropdown-item">
+        <a class="dropdown-link" routerLink={{page.url}}>{{page.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
