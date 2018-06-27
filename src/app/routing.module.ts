@@ -9,6 +9,9 @@ const appRoutes: Routes = [
     path: 'homepage', loadChildren: './home-page/home-page.module#HomePageModule',
   },
   {
+    path: 'contents', loadChildren: './contents-page/contents-page.module#ContentsPageModule',
+  },
+  {
     path: '**', redirectTo: '/homepage',
   },
 ];
