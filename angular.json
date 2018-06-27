@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/study",
+            "outputPath": "public",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -116,16 +116,6 @@
           }
         }
       }
-    }
-  },
-  "defaults": {
-    "styleExt": "scss",
-    "component": {
-      "changeDetection": "OnPush"
-    },
-    "serve": {
-      "port": 3000,
-      "host": "127.0.0.1"
     }
   }
 }
