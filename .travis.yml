@@ -23,7 +23,6 @@ before_script:
 - npm install -g karma
 script:
 - ng lint
-- ng test
 - ng build
 deploy:
   provider: firebase
