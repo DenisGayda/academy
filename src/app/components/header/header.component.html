@@ -9,10 +9,10 @@
       </div>
     </div>
   </div>
-  <div class="hidden_dropdown" [ngClass]="{ dropdown_container:dropdownVisible}">
+  <div class="hidden_dropdown" [ngClass]="{dropdown_container:dropdownVisible}">
     <ul class="list-links-pages">
-      <li *ngFor="let page of pagesLinks" class="dropdown-item">
-        <a class="dropdown-link" routerLink={{page.url}}>{{page.name}}</a>
+      <li *ngFor="let page of pagesLinks" class="dropdown-item" (click)="choisePage()">
+        <a class="dropdown-link" routerLink={{page.url}}><span class="dropdown-name-page">{{page.name}}</span></a>
       </li>
     </ul>
   </div>

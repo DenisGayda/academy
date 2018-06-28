@@ -22,4 +22,7 @@ export class HeaderComponent {
   public visible(): void {
     this.dropdownVisible = !this.dropdownVisible;
   }
+  public choisePage(): void {
+    this.dropdownVisible = false;
+  }
 }
