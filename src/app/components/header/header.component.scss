@@ -1,4 +1,6 @@
 .nav-container{
+  display: flex;
+  flex-direction: row;
   background-color: black;
   width: 100%;
   height: 50px;
@@ -6,7 +8,7 @@
   .nav-links-сontainer{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 70%;
     height: 100%;
 
     .link-item-block{
@@ -33,10 +35,19 @@
     .link-item-block:hover{
       background-color:gray;
     }
+
+    @media only screen and (max-width: 650px) {
+      .link-item-block{
+        display:none;
+      }
+    }
+  }
+  .nav-buttons-container{
+    display:flex;
+    width: 30%;
+    justify-content: flex-end;
     .nav-dropdown-menu{
       display: none;
-      position: absolute;
-      right:0;
       padding-right:20px;
       height: 50px;
       align-items: center;
@@ -52,14 +63,27 @@
         outline: none;
       }
     }
+    .active-login-form-container{
+      display:flex;
+      height: 50px;
+      align-items: center;
+      margin-right: 10%;
+      .active-login-form{
+        height: 30px;
+        display: block;
+        background: none;
+        border: 1px solid white;
+        border-radius: 5px;
+        color:white;
+      }
+    }
     @media only screen and (max-width: 650px) {
       .nav-dropdown-menu{
         display: flex;
       }
-      .link-item-block{
-        display:none;
+      .active-login-form-container{
+        margin-right: 5%;
       }
-
     }
   }
 }
@@ -108,6 +132,69 @@
     display:none;
   }
 }
+.hidden-form-container{
+  display: none;
+}
 
+.login_form_container{
+  display:flex;
+  position: absolute;
+  right: 0;
+  align-items: center;
+  padding: 20px;
+  background: gray;
+  .login-form{
+    display: block;
+    input{
+      display: block;
+    }
+    input ~ input{
+      margin-top: 5px;
+    }
+    .login-button-container{
+      padding: 0;
+      margin-top: 5px;
+      display: flex;
+      button{
+        display: block;
+        width: 50%;
+      }
+      .sign-up-button{
+        margin-left: 1%;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 650px) {
+  .login_form_container{
+    position: absolute;
+    padding: 0;
+    left: 0;
+    width: 100%;
+    .login-form{
+      width: inherit;
+      margin: 0;
+      padding: 5px;
+      input{
+        display: block;
+        width: 80%;
+        margin-left: 9%;
+      }
+      .login-button-container{
+        margin-left: 9%;
+        width: 81%;
+        display: flex;
+        flex-direction: row;
+        button{
+          display: block;
+          flex-grow: 1;
+        }
+        .sign-up-button{
+          margin-left: 1%;
+        }
+      }
 
+    }
+  }
+}
 

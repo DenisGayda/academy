@@ -12,6 +12,7 @@ interface ILinks {
 export class HeaderComponent {
 
   public dropdownVisible = false;
+  public loginFormVisible = false;
   public pagesLinks: ILinks[] = [
     {name: 'Главная', url: '/homepage'},
     {name: 'Содержание', url: '/contents'},
@@ -19,10 +20,13 @@ export class HeaderComponent {
     {name: 'Личный кабинет', url: '/profile'},
   ];
 
-  public visible(): void {
+  public visibleDropdown(): void {
     this.dropdownVisible = !this.dropdownVisible;
   }
   public choisePage(): void {
     this.dropdownVisible = false;
+  }
+  public visibleLoginForm(): void {
+    this.loginFormVisible = !this.loginFormVisible;
   }
 }
