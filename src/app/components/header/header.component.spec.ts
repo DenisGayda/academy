@@ -6,7 +6,6 @@ import {RouterModule} from '@angular/router';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -17,7 +16,6 @@ describe('HeaderComponent', () => {
     })
       .compileComponents();
   }));
-
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
