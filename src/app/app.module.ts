@@ -4,8 +4,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { RoutingModule } from './routing.module';
+import { FooterModule } from './footer/footer.module';
 
 import { AppComponent } from './app.component';
+import { HeaderModule } from './components/header/header.module';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,12 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     RoutingModule,
+    FooterModule,
+    HeaderModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
+
 export class AppModule { }
