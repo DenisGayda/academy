@@ -23,9 +23,11 @@ export class HeaderComponent {
   public visibleDropdown(): void {
     this.dropdownVisible = !this.dropdownVisible;
   }
+
   public choisePage(): void {
     this.dropdownVisible = false;
   }
+
   public visibleLoginForm(): void {
     this.loginFormVisible = !this.loginFormVisible;
   }
