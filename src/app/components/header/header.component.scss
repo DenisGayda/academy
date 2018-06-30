@@ -147,6 +147,7 @@
     display: block;
     input{
       display: block;
+      width: 99%;
     }
     input ~ input{
       margin-top: 5px;
@@ -154,13 +155,16 @@
     .login-button-container{
       padding: 0;
       margin-top: 5px;
-      display: flex;
-      button{
-        display: block;
-        width: 50%;
+      display: block;
+      .login-form-button{
+        display: inline-block;
+        width: 49%;
       }
-      .sign-up-button{
-        margin-left: 1%;
+      .sign-up-button, .sign-up-github-button{
+        margin-left: 2%;
+      }
+      .sign-in-google-button, .sign-up-github-button{
+        margin-top: 5px;
       }
     }
   }
@@ -183,14 +187,17 @@
       .login-button-container{
         margin-left: 9%;
         width: 81%;
-        display: flex;
+        display: block;
         flex-direction: row;
-        button{
-          display: block;
-          flex-grow: 1;
+        .login-form-button{
+          display: inline-block;
+          width: 49%;
         }
-        .sign-up-button{
-          margin-left: 1%;
+        .sign-up-button, .sign-up-github-button{
+          margin-left: 2%;
+        }
+        .sign-in-google-button, .sign-up-github-button{
+          margin-top: 5px;
         }
       }
 

@@ -21,7 +21,8 @@ import { HeaderModule } from './components/header/header.module';
     FooterModule,
     HeaderModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
 
