@@ -1,28 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { NgModule } from '@angular/core';
+
+import { CommonModule } from '@angular/common';
+
 import { HeaderComponent } from './header.component';
-import {RouterModule} from '@angular/router';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        RouterModule,
-      ],
-      declarations: [ HeaderComponent ],
-    })
-      .compileComponents();
-  }));
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+import { RouterModule } from '@angular/router';
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule,
+  ],
+  exports: [
+    HeaderComponent,
+  ],
+  declarations: [HeaderComponent],
+})
+export class HeaderModule { }

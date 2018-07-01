@@ -10,7 +10,6 @@ interface ILinks {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-
   public dropdownVisible = false;
   public loginFormVisible = false;
   public pagesLinks: ILinks[] = [

@@ -9,7 +9,6 @@
     flex-direction: row;
     width: 70%;
     height: 100%;
-
     .link-item-block{
       display:flex;
       align-items: center;
@@ -19,7 +18,6 @@
       text-align: center;
       margin-right: 5px;
       margin-left: 20px;
-
       .link-page{
         width: 100%;
         display: block;
@@ -34,7 +32,6 @@
     .link-item-block:hover{
       background-color:gray;
     }
-
     @media only screen and (max-width: 650px) {
       .link-item-block{
         display:none;
@@ -167,7 +164,6 @@
     }
   }
 }
-
 @media only screen and (max-width: 650px) {
   .login_form_container{
     position: absolute;
