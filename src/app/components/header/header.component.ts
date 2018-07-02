@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl} from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase';
+import { FirebaseService } from '../../services/firebase-service/firebase.service';
 
 interface ILinks {
   name: string;
@@ -23,12 +22,14 @@ export class HeaderComponent implements OnInit {
   ];
   public txtEmail = '';
   public txtPassword = '';
+  public user;
   public emailSearcher: FormControl = new FormControl('');
   public passwordSearcher: FormControl = new FormControl('');
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
+    this.user = this.firebaseService.user;
     this.emailSearcher.valueChanges.subscribe(value => {
       this.txtEmail = value;
     });
@@ -50,32 +51,27 @@ export class HeaderComponent implements OnInit {
   }
 
   public loginWithGoogle(): void {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    this.firebaseService.loginWithGoogle();
     this.visibleLoginForm();
   }
 
   public loginWithGithub(): void {
-    this.afAuth.auth.signInWithPopup(new auth.GithubAuthProvider());
+    this.firebaseService.loginWithGithub();
     this.visibleLoginForm();
   }
 
   public logout(): void {
-    this.afAuth.auth.signOut();
+    this.firebaseService.logout();
   }
 
   public login(): void {
-    const promise = this.afAuth.auth.signInWithEmailAndPassword(this.txtEmail, this.txtPassword);
-    promise.catch(e => {
-      throw new Error(e);
-    });
+    this.firebaseService.login(this.txtEmail, this.txtPassword);
     this.visibleLoginForm();
   }
 
   public signup(): void {
-    const promise = this.afAuth.auth.createUserWithEmailAndPassword(this.txtEmail, this.txtPassword);
-    promise.catch(e => {
-      throw new Error(e);
-    });
+    this.firebaseService.signup(this.txtEmail, this.txtPassword);
     this.visibleLoginForm();
   }
+
 }
