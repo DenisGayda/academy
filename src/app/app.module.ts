@@ -17,6 +17,7 @@ import { HeaderModule } from './components/header/header.module';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RoutingModule,
     FooterModule,
     HeaderModule,
