@@ -26,7 +26,7 @@
   <div class="hidden_dropdown" [ngClass]="{dropdown_container:dropdownVisible}">
     <ul class="list-links-pages">
       <li *ngFor="let page of pagesLinks" class="dropdown-item" (click)="choisePage()">
-        <a class="dropdown-link" routerLink={{page.url}}><span class="dropdown-name-page">{{page.name}}</span></a>
+        <a class="dropdown-link" [routerLink]="page.url"><span class="dropdown-name-page">{{page.name}}</span></a>
       </li>
     </ul>
   </div>
