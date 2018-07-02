@@ -6,13 +6,13 @@ const appRoutes: Routes = [
     path: '', redirectTo: '/homepage', pathMatch: 'full',
   },
   {
-    path: 'homepage', loadChildren: './home-page/home-page.module#HomePageModule',
+    path: 'homepage', loadChildren: './components/pages/home/home-page.module#HomePageModule',
   },
   {
-    path: 'contents', loadChildren: './contents-page/contents-page.module#ContentsPageModule',
+    path: 'contents', loadChildren: './components/pages/contents/contents-page.module#ContentsPageModule',
   },
   {
-    path: 'profile', loadChildren: './profile-page/profile-page.module#ProfilePageModule',
+    path: 'profile', loadChildren: './components/pages/profile/profile-page.module#ProfilePageModule',
   },
   {
     path: '**', redirectTo: '/homepage',

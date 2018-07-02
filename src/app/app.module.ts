@@ -5,9 +5,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { RoutingModule } from './routing.module';
-import { FooterModule } from './footer/footer.module';
+import { FooterModule } from './components/footer/footer.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header/header.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,9 @@ import { HeaderModule } from './components/header/header.module';
     RoutingModule,
     FooterModule,
     HeaderModule,
+    BrowserAnimationsModule,
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 
