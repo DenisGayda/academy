@@ -3,6 +3,7 @@ import { FooterModule } from './footer/footer.module';
 import { HeaderModule } from './components/header/header.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
@@ -14,6 +15,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         FooterModule,
         HeaderModule,
+        BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
       ],

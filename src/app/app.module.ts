@@ -8,6 +8,7 @@ import { RoutingModule } from './routing.module';
 import { FooterModule } from './footer/footer.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header/header.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HeaderModule } from './components/header/header.module';
     RoutingModule,
     FooterModule,
     HeaderModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
