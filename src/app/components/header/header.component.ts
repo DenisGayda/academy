@@ -23,14 +23,12 @@ export class HeaderComponent implements OnInit {
   ];
   public txtEmail = '';
   public txtPassword = '';
-  public emailSearcher: FormControl;
-  public passwordSearcher: FormControl;
+  public emailSearcher: FormControl = new FormControl('');
+  public passwordSearcher: FormControl = new FormControl('');
 
   constructor(public afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
-    this.emailSearcher = new FormControl('');
-    this.passwordSearcher = new FormControl('');
     this.emailSearcher.valueChanges.subscribe(value => {
       this.txtEmail = value;
     });
