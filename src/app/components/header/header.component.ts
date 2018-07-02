@@ -18,12 +18,15 @@ export class HeaderComponent {
     {name: 'Тесты', url: '#'},
     {name: 'Личный кабинет', url: '/profile'},
   ];
+
   public visibleDropdown(): void {
     this.dropdownVisible = !this.dropdownVisible;
   }
+
   public choisePage(): void {
     this.dropdownVisible = false;
   }
+
   public visibleLoginForm(): void {
     this.loginFormVisible = !this.loginFormVisible;
   }
