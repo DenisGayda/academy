@@ -6,9 +6,18 @@
       </div>
     </div>
     <div class="nav-buttons-container">
-      <div class="active-login-form-container">
-        <button (click)="visibleLoginForm()" class="active-login-form">Login</button>
+
+      <div class="active-login-form-container" *ngIf="afAuth.user | async as user; else showLogin">
+        <p>Hello, {{ user.displayName }}!</p>
+        <button class="active-login-form" (click)="logout()">Logout</button>
       </div>
+
+      <ng-template #showLogin>
+        <div class="active-login-form-container">
+          <button (click)="visibleLoginForm()" class="active-login-form">Login</button>
+        </div>
+      </ng-template>
+
       <div class="nav-dropdown-menu">
         <button (click)="visibleDropdown()" class="active-dropdown-button">Меню</button>
       </div>
@@ -17,19 +26,19 @@
   <div class="hidden_dropdown" [ngClass]="{dropdown_container:dropdownVisible}">
     <ul class="list-links-pages">
       <li *ngFor="let page of pagesLinks" class="dropdown-item" (click)="choisePage()">
-        <a class="dropdown-link" routerLink={{page.url}}><span class="dropdown-name-page">{{page.name}}</span></a>
+        <a class="dropdown-link" [routerLink]="page.url"><span class="dropdown-name-page">{{page.name}}</span></a>
       </li>
     </ul>
   </div>
   <div class="hidden-form-container" [ngClass]="{login_form_container:loginFormVisible}">
     <form action="" class="login-form">
-      <input type="text" placeholder="login" class="login-input login"/>
-      <input type="text" placeholder="password" class="login-input password"/>
+      <input type="text" placeholder="email" class="login-input login" [formControl]="emailSearcher"/>
+      <input type="password" placeholder="password" class="login-input password" [formControl]="passwordSearcher"/>
       <div class="login-button-container">
-        <button class="login-form-button sign-in-button">Sign in</button>
-        <button class="login-form-button sign-up-button">Sign up</button>
-        <button class="login-form-button sign-in-google-button">Login with Google</button>
-        <button class="login-form-button sign-up-github-button">Login with GitHub</button>
+        <button class="login-form-button sign-in-button" (click)="login()">Sign in</button>
+        <button class="login-form-button sign-up-button" (click)="signup()">Sign up</button>
+        <button class="login-form-button sign-in-google-button" (click)="loginWithGoogle()">Login with Google</button>
+        <button class="login-form-button sign-up-github-button" (click)="loginWithGithub()">Login with GitHub</button>
       </div>
     </form>
   </div>
