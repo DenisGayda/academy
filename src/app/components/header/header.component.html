@@ -1,0 +1,36 @@
+<div>
+  <div class="nav-container">
+    <div class="nav-links-сontainer">
+      <div class="link-item-block" *ngFor="let page of pagesLinks">
+        <a class="link-page" [routerLink]="page.url">{{page.name}}</a>
+      </div>
+    </div>
+    <div class="nav-buttons-container">
+      <div class="active-login-form-container">
+        <button (click)="visibleLoginForm()" class="active-login-form">Login</button>
+      </div>
+      <div class="nav-dropdown-menu">
+        <button (click)="visibleDropdown()" class="active-dropdown-button">Меню</button>
+      </div>
+    </div>
+  </div>
+  <div class="hidden_dropdown" [ngClass]="{dropdown_container:dropdownVisible}">
+    <ul class="list-links-pages">
+      <li *ngFor="let page of pagesLinks" class="dropdown-item" (click)="choisePage()">
+        <a class="dropdown-link" routerLink={{page.url}}><span class="dropdown-name-page">{{page.name}}</span></a>
+      </li>
+    </ul>
+  </div>
+  <div class="hidden-form-container" [ngClass]="{login_form_container:loginFormVisible}">
+    <form action="" class="login-form">
+      <input type="text" placeholder="login" class="login-input login"/>
+      <input type="text" placeholder="password" class="login-input password"/>
+      <div class="login-button-container">
+        <button class="login-form-button sign-in-button">Sign in</button>
+        <button class="login-form-button sign-up-button">Sign up</button>
+        <button class="login-form-button sign-in-google-button">Login with Google</button>
+        <button class="login-form-button sign-up-github-button">Login with GitHub</button>
+      </div>
+    </form>
+  </div>
+</div>

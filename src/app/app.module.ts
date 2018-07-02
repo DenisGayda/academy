@@ -6,8 +6,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { RoutingModule } from './routing.module';
 import { FooterModule } from './footer/footer.module';
-
 import { AppComponent } from './app.component';
+import { HeaderModule } from './components/header/header.module';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,11 @@ import { AppComponent } from './app.component';
     AngularFireAuthModule,
     RoutingModule,
     FooterModule,
+    HeaderModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent],
 })
+
 export class AppModule { }
