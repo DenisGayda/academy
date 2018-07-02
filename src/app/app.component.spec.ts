@@ -7,7 +7,6 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from './services/firebase-service/firebase.service';
 
 describe('AppComponent', () => {
