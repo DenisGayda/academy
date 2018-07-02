@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
-    this.user = this.firebaseService.checkUser();
+    this.user = this.firebaseService.user;
     this.emailSearcher.valueChanges.subscribe(value => {
       this.txtEmail = value;
     });

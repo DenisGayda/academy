@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header.component';
 import { RouterModule } from '@angular/router';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FirebaseService } from '../../services/firebase-service/firebase.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   ],
   exports: [
     HeaderComponent,
+  ],
+  providers: [
+    FirebaseService,
   ],
   declarations: [HeaderComponent],
 })

@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase';
+import { auth, User } from 'firebase';
 import { Observable } from 'rxjs/internal/Observable';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class FirebaseService {
   private _dataInDatabase: Observable<{}[]>;
   constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) { }
@@ -53,7 +51,7 @@ export class FirebaseService {
     });
   }
 
-  public checkUser(): Observable<{}>  {
+  public get user(): Observable<User> {
     return this.afAuth.user;
   }
 }
