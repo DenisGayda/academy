@@ -1,5 +1,5 @@
 import { fakeAsync, TestBed } from '@angular/core/testing';
-import { FooterModule } from './footer/footer.module';
+import { FooterModule } from './components/footer/footer.module';
 import { HeaderModule } from './components/header/header.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
