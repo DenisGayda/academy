@@ -73,4 +73,5 @@ export class HeaderComponent implements OnInit {
     this.firebaseService.signup(this.txtEmail, this.txtPassword);
     this.visibleLoginForm();
   }
+
 }
