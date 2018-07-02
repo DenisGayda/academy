@@ -8,6 +8,6 @@ describe('FooterModule', () => {
   });
 
   it('should create an instance', () => {
-    expect(HeaderModule).toBeTruthy();
+    expect(headerModule).toBeTruthy();
   });
 });
