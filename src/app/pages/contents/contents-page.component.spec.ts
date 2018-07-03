@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContentsPageComponent } from './contents-page.component';
-import { TreeModule } from '../../tree/tree.module';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-import {environment} from '../../../../environments/environment';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
-import {DataTreeService} from '../../tree/settings/data-tree-service';
-import {FirebaseService} from '../../../services/firebase-service/firebase.service';
-
+import {TreeModule} from '../../components/tree/tree.module';
+import {environment} from '../../../environments/environment';
+import {FirebaseService} from '../../services/firebase-service/firebase.service';
+import {DataTreeService} from '../../components/tree/settings/data-tree-service';
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 describe('ContentsPageComponent', () => {
   let component: ContentsPageComponent;
   let fixture: ComponentFixture<ContentsPageComponent>;
@@ -20,11 +20,13 @@ describe('ContentsPageComponent', () => {
         AngularFireDatabaseModule,
         MatTreeModule,
         MatIconModule,
+        AngularFireAuthModule,
       ],
       declarations: [ ContentsPageComponent ],
       providers: [
         FirebaseService,
         DataTreeService,
+        AngularFireAuth,
       ],
     })
     .compileComponents();

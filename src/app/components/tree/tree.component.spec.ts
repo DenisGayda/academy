@@ -8,6 +8,7 @@ import {environment} from '../../../environments/environment';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {DataTreeService} from './settings/data-tree-service';
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 
 describe('TreeComponent', () => {
   let component: TreeComponent;
@@ -21,11 +22,13 @@ describe('TreeComponent', () => {
         MatIconModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
+        AngularFireAuthModule,
       ],
       declarations: [ TreeComponent ],
       providers: [
         FirebaseService,
         DataTreeService,
+        AngularFireAuth,
       ],
     })
     .compileComponents();
