@@ -37,18 +37,12 @@ export class FirebaseService {
     this.afAuth.auth.signOut();
   }
 
-  public login(email: string, password: string): void {
-    const promise = this.afAuth.auth.signInWithEmailAndPassword(email, password);
-    promise.catch(e => {
-      throw new Error(e);
-    });
+  public login(email: string, password: string): Promise<{}> {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  public signup(email: string, password: string): void {
-    const promise = this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-    promise.catch(e => {
-      throw new Error(e);
-    });
+  public signup(email: string, password: string): Promise<{}> {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
   public get user(): Observable<User> {
