@@ -143,6 +143,9 @@
   background: gray;
   .login-form{
     display: block;
+    .alert-danger {
+      color: #ffdc3a;
+    }
     input{
       display: block;
       width: 99%;
