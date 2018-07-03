@@ -12,6 +12,9 @@ const appRoutes: Routes = [
     path: 'contents', loadChildren: './pages/contents/contents-page.module#ContentsPageModule',
   },
   {
+    path: 'exercises', loadChildren: './pages/exercises/exercises-page.module#ExercisesPageModule',
+  },
+  {
     path: 'profile', loadChildren: './pages/profile/profile-page.module#ProfilePageModule',
   },
   {

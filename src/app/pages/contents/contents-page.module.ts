@@ -11,4 +11,5 @@ import { ContentsPageComponent } from './contents-page.component';
   ],
   declarations: [ContentsPageComponent],
 })
+
 export class ContentsPageModule { }
