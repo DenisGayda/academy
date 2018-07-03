@@ -12,4 +12,5 @@ import { TreeModule } from '../../tree/tree.module';
   ],
   declarations: [ContentsPageComponent],
 })
+
 export class ContentsPageModule { }

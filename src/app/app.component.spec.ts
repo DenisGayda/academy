@@ -7,6 +7,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
+import { FirebaseService } from './services/firebase-service/firebase.service';
 
 describe('AppComponent', () => {
   beforeEach(fakeAsync(() => {
@@ -22,7 +23,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
       ],
-    }).compileComponents();
+      providers: [
+        {provide: FirebaseService, useValue: {}},
+      ],
+      }).compileComponents();
   }));
   it('should create the app', fakeAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
