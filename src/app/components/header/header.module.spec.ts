@@ -1,6 +1,6 @@
 import { HeaderModule } from './header.module';
 
-describe('FooterModule', () => {
+describe('HeaderModule', () => {
   let headerModule: HeaderModule;
 
   beforeEach(() => {
