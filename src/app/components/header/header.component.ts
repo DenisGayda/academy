@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   public pagesLinks: ILinks[] = [
     {name: 'Главная', url: '/homepage'},
     {name: 'Содержание', url: '/contents'},
-    {name: 'Тесты', url: '#'},
+    {name: 'Тесты', url: '/exercises'},
     {name: 'Личный кабинет', url: '/profile'},
   ];
   public txtEmail = '';
