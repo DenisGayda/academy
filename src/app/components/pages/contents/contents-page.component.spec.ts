@@ -4,6 +4,10 @@ import { TreeModule } from '../../tree/tree.module';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {environment} from '../../../../environments/environment';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatIconModule} from '@angular/material/icon';
+import {DataTreeService} from '../../tree/settings/data-tree-service';
+import {FirebaseService} from '../../../services/firebase-service/firebase.service';
 
 describe('ContentsPageComponent', () => {
   let component: ContentsPageComponent;
@@ -14,8 +18,14 @@ describe('ContentsPageComponent', () => {
       imports: [ TreeModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
+        MatTreeModule,
+        MatIconModule,
       ],
       declarations: [ ContentsPageComponent ],
+      providers: [
+        FirebaseService,
+        DataTreeService,
+      ],
     })
     .compileComponents();
   }));
