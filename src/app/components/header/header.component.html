@@ -31,9 +31,26 @@
     </ul>
   </div>
   <div class="hidden-form-container" [ngClass]="{login_form_container:loginFormVisible}">
-    <form action="" class="login-form">
-      <input type="text" placeholder="email" class="login-input login" [formControl]="emailSearcher"/>
+
+    <form action="" class="login-form" [formGroup]="myForm">
+      <input type="email" placeholder="email" class="login-input login" [formControl]="emailSearcher"/>
+      <div class="alert-danger"
+           *ngIf="this.emailSearcher.invalid && this.emailSearcher.touched">
+        Введите корректный email
+      </div>
+      <div class="alert-danger"
+           *ngIf="this.errorEmailExist">
+        Email используется друим пользователем
+      </div>
       <input type="password" placeholder="password" class="login-input password" [formControl]="passwordSearcher"/>
+      <div class="alert-danger"
+           *ngIf="this.passwordSearcher.invalid && this.passwordSearcher.touched">
+        Введите корректный пароль (не менее 6 символов)
+      </div>
+      <div class="alert-danger"
+           *ngIf="this.errorWrongPassword ">
+        Неправильный пароль
+      </div>
       <div class="login-button-container">
         <button class="login-form-button sign-in-button" (click)="login()">Sign in</button>
         <button class="login-form-button sign-up-button" (click)="signup()">Sign up</button>
@@ -41,5 +58,6 @@
         <button class="login-form-button sign-up-github-button" (click)="loginWithGithub()">Login with GitHub</button>
       </div>
     </form>
+
   </div>
 </div>
