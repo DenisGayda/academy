@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase-service/firebase.service';
-// import { ErrorStateMatcher } from '@angular/material/core';
 
 interface ILinks {
   name: string;
@@ -29,7 +28,6 @@ export class HeaderComponent implements OnInit {
   public errorNotRegisteredUser = false;
 
   public myForm: FormGroup;
-  // public matcher = new ErrorStateMatcher();
 
   constructor(private firebaseService: FirebaseService) { }
 
