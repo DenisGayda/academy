@@ -140,18 +140,20 @@
   right: 0;
   align-items: center;
   padding: 20px;
-  background: gray;
+  background: lightgrey;
   .login-form{
     display: block;
-    .alert-danger {
-      color: #ffdc3a;
-    }
-    input{
+    mat-form-field{
       display: block;
       width: 99%;
     }
-    input ~ input{
+    mat-form-field ~ mat-form-field{
       margin-top: 5px;
+    }
+    .alert-danger {
+      width: 95%;
+      text-align: center;
+      color: red;
     }
     .login-button-container{
       padding: 0;

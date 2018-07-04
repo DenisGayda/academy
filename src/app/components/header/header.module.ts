@@ -5,6 +5,7 @@ import { HeaderComponent } from './header.component';
 import { RouterModule } from '@angular/router';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebaseService } from '../../services/firebase-service/firebase.service';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { FirebaseService } from '../../services/firebase-service/firebase.servic
     FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
+    MatInputModule,
   ],
   exports: [
     HeaderComponent,
