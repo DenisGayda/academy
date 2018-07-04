@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../../services/firebase-service/firebase.service';
-import { FlatTreeControl } from '@angular/cdk/tree';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { FileNodeClass } from './settings/file-node.class';
-import { FileFlatNodeClass } from './settings/file-flat-node.class';
-import { DataTreeService } from './settings/data-tree-service';
-import { getLevel } from './settings/helpers/get-level-helper';
-import { isExpandable } from './settings/helpers/is-expandable-helper';
-import { getChildren } from './settings/helpers/get-children-hepler';
-import { hasChild } from './settings/helpers/has-child-helpers';
-import {transformer} from './settings/helpers/transformer-helpers';
+import {  Component, OnInit  } from '@angular/core';
+import {  FirebaseService  } from '../../services/firebase-service/firebase.service';
+import {  FlatTreeControl  } from '@angular/cdk/tree';
+import {  MatTreeFlatDataSource, MatTreeFlattener  } from '@angular/material/tree';
+import {  FileNodeClass  } from './settings/file-node.class';
+import {  FileFlatNodeClass  } from './settings/file-flat-node.class';
+import {  DataTreeService  } from './settings/data-tree-service';
+import {  getLevel  } from './settings/helpers/get-level-helper';
+import {  isExpandable  } from './settings/helpers/is-expandable-helper';
+import {  getChildren  } from './settings/helpers/get-children-hepler';
+import {  hasChild  } from './settings/helpers/has-child-helpers';
+import {  transformer  } from './settings/helpers/transformer-helpers';
 interface TreeInterface {
   title?: string;
   contents: {}[];

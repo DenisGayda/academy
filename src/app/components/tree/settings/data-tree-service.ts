@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { FileNodeClass } from './file-node.class';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import {  Injectable  } from '@angular/core';
+import {  FileNodeClass  } from './file-node.class';
+import {  BehaviorSubject  } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable()
 export class DataTreeService {
