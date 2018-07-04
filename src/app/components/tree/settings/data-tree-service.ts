@@ -4,16 +4,18 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable()
 export class DataTreeService {
-  dataChange = new BehaviorSubject<FileNodeClass[]>([]);
+  public dataChange = new BehaviorSubject<FileNodeClass[]>([]);
 
-  get data(): FileNodeClass[] { return this.dataChange.value; }
-  constructor() {
+  public get data(): FileNodeClass[] {
+    return this.dataChange.value;
   }
+
   public initialize(info: string): void {
     const dataObject = JSON.parse(info);
     const data = this.buildFileTree(dataObject, 0);
     this.dataChange.next(data);
   }
+
   public buildFileTree(obj: object, level: number): FileNodeClass[] {
     return Object.keys(obj).reduce<FileNodeClass[]>((accumulator, key) => {
       const value = obj[key];
