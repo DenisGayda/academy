@@ -90,7 +90,7 @@ export class HeaderComponent implements OnInit {
 
   public login(): void {
     const _errorCodeWrongPassword = 'auth/wrong-password';
-    const _errorCodeNotRegisteredUser = "auth/user-not-found";
+    const _errorCodeNotRegisteredUser = 'auth/user-not-found';
     this.firebaseService.login(this.txtEmail, this.txtPassword)
       .then(() => this.visibleLoginForm())
       .catch(e => {
