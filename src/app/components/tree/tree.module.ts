@@ -8,7 +8,6 @@ import {  DataTreeService  } from './settings/data-tree-service';
 import {  MatInputModule  } from '@angular/material/input';
 import {  FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
-
 @NgModule({
   imports: [
     CommonModule,
