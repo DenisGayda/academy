@@ -8,6 +8,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../../services/firebase-service/firebase.service';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { FirebaseService } from '../../services/firebase-service/firebase.servic
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    MatInputModule,
   ],
   exports: [
     HeaderComponent,

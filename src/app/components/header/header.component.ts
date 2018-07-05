@@ -25,28 +25,35 @@ export class HeaderComponent implements OnInit {
   public user;
   public errorEmailExist = false;
   public errorWrongPassword = false;
-  public emailSearcher: FormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern('[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}'),
-  ]);
-  public passwordSearcher: FormControl = new FormControl ('', [
-    Validators.required,
-    Validators.pattern('[0-9a-zA-Z!@#$%^&*]{6,}'),
-  ]);
-  public myForm: FormGroup = new FormGroup({
-    email: this.emailSearcher,
-    password: this.passwordSearcher,
-  });
+  public errorNotRegisteredUser = false;
+
+  public myForm: FormGroup;
+
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
+    this.myForm = new FormGroup({
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}'),
+      ]),
+      password: new FormControl ('', [
+        Validators.required,
+        Validators.pattern('[0-9a-zA-Z!@#$%^&*]{6,}'),
+      ]),
+    });
+
     this.user = this.firebaseService.user;
-    this.emailSearcher.valueChanges.subscribe(value => {
+    this.myForm.controls.email.valueChanges.subscribe(value => {
       this.errorEmailExist = false;
+      this.errorWrongPassword = false;
+      this.errorNotRegisteredUser = false;
       this.txtEmail = value;
     });
-    this.passwordSearcher.valueChanges.subscribe(value => {
+    this.myForm.controls.password.valueChanges.subscribe(value => {
       this.errorWrongPassword = false;
+      this.errorNotRegisteredUser = false;
+      this.errorEmailExist = false;
       this.txtPassword = value;
     });
   }
@@ -64,6 +71,7 @@ export class HeaderComponent implements OnInit {
     this.myForm.reset();
     this.errorEmailExist = false;
     this.errorWrongPassword = false;
+    this.errorNotRegisteredUser = false;
   }
 
   public loginWithGoogle(): void {
@@ -81,27 +89,31 @@ export class HeaderComponent implements OnInit {
   }
 
   public login(): void {
-    const _errorCode = 'auth/wrong-password';
-    const promise = this.firebaseService.login(this.txtEmail, this.txtPassword);
-    promise
+    const _errorCodeWrongPassword = 'auth/wrong-password';
+    const _errorCodeNotRegisteredUser = 'auth/user-not-found';
+    this.firebaseService.login(this.txtEmail, this.txtPassword)
       .then(() => this.visibleLoginForm())
       .catch(e => {
-        if (e.code === _errorCode) {
+        if (e.code === _errorCodeWrongPassword) {
+          this.myForm.reset();
           this.errorWrongPassword = true;
+        }
+        if (e.code === _errorCodeNotRegisteredUser) {
+          this.myForm.reset();
+          this.errorNotRegisteredUser = true;
         }
       });
   }
 
   public signup(): void {
     const _errorCode = 'auth/email-already-in-use';
-    const promise = this.firebaseService.signup(this.txtEmail, this.txtPassword);
-    promise
+    this.firebaseService.signup(this.txtEmail, this.txtPassword)
       .then(() => this.visibleLoginForm())
       .catch(e => {
         if (e.code === _errorCode) {
+          this.myForm.reset();
           this.errorEmailExist = true;
         }
       });
   }
-
 }
