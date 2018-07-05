@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContentsPageComponent } from './contents-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TreeModule } from '../../components/tree/tree.module';
 import { ContentsPageRoutingModule } from './contents-page-routing.module';
 import { CommonModule } from '@angular/common';
@@ -15,9 +16,11 @@ describe('ContentsPageComponent', () => {
     firebaseService = mock<FirebaseService>(FirebaseService);
     when(firebaseService.dataInDatabase).thenReturn(of([]));
     TestBed.configureTestingModule({
-      imports: [TreeModule,
+      imports: [
+        TreeModule,
         CommonModule,
         ContentsPageRoutingModule,
+        BrowserAnimationsModule,
       ],
       declarations: [ContentsPageComponent],
       providers: [
