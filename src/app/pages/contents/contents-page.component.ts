@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './contents-page.component.html',
   styleUrls: ['./contents-page.component.scss'],
 })
-export class ContentsPageComponent {}
+export class ContentsPageComponent {
+  public swoSB = true;
+
+  public onShowSideBar(): void {
+    this.swoSB = !this.swoSB;
+  }
+}
