@@ -8,7 +8,7 @@
     <div class="nav-buttons-container">
 
       <div class="active-login-form-container" *ngIf="this.user | async as user; else showLogin">
-        <p>Hello, {{ user.displayName }}!</p>
+        <p class="user-hello">Hello, {{ user.displayName }}!</p>
         <button class="active-login-form" (click)="logout()">Logout</button>
       </div>
 
@@ -35,7 +35,7 @@
     <form action="" class="login-form" *ngIf="myForm" [formGroup]="myForm" autocomplete="off">
 
       <mat-form-field>
-        <input matInput type="email" placeholder="email" formControlName="email" >
+        <input matInput class="form-input" type="email" placeholder="email" formControlName="email" >
 
         <mat-error *ngIf="this.myForm.get('email').invalid && this.myForm.get('email').touched">
           Please enter a valid email address
@@ -43,7 +43,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput type="password" placeholder="password" formControlName="password" [errorStateMatcher]="matcher">
+        <input matInput class="form-input" type="password" placeholder="password" formControlName="password" [errorStateMatcher]="matcher">
 
         <mat-error *ngIf="this.myForm.get('password').invalid && this.myForm.get('password').touched">
           Please enter a valid password (unless 6 symbols)
