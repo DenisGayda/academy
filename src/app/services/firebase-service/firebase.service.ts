@@ -10,7 +10,7 @@ export class FirebaseService {
   constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) { }
 
   public get dataInDatabase(): Observable<{}[]> {
-    return this._dataInDatabase = this.db.list('/courses').valueChanges();
+    return this._dataInDatabase = this.db.list('/Contents').valueChanges();
   }
 
   public setDataInDatabase(url: string, key: string, value: {}): void {
