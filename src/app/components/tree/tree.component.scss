@@ -1,0 +1,12 @@
+.hidden_border{
+  background: none;
+  border-style: none;
+}
+.hidden_border:active{
+  outline: none;
+  border-style: none;
+}
+.tree-container{
+  width: 40%;
+  border-right: 2px solid black;
+}

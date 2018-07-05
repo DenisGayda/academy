@@ -137,6 +137,7 @@
 .login_form_container{
   display:flex;
   position: absolute;
+  z-index: 100;
   right: 0;
   align-items: center;
   padding: 20px;
