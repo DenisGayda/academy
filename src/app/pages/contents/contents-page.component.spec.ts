@@ -1,35 +1,30 @@
-import {  async, ComponentFixture, TestBed  } from '@angular/core/testing';
-import {  ContentsPageComponent  } from './contents-page.component';
-import {  AngularFireModule  } from 'angularfire2';
-import {  AngularFireDatabaseModule  } from 'angularfire2/database';
-import {  MatTreeModule  } from '@angular/material/tree';
-import {  MatIconModule  } from '@angular/material/icon';
-import {  TreeModule  } from '../../components/tree/tree.module';
-import {  environment  } from '../../../environments/environment';
-import {  FirebaseService  } from '../../services/firebase-service/firebase.service';
-import {  DataTreeService  } from '../../components/tree/settings/data-tree-service';
-import {  AngularFireAuth, AngularFireAuthModule  } from 'angularfire2/auth';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ContentsPageComponent } from './contents-page.component';
+import { TreeModule } from '../../components/tree/tree.module';
+import { ContentsPageRoutingModule } from './contents-page-routing.module';
+import { CommonModule } from '@angular/common';
+import { FirebaseService } from '../../services/firebase-service/firebase.service';
+import { instance, mock, when } from 'ts-mockito';
+import { of } from 'rxjs/internal/observable/of';
+
 describe('ContentsPageComponent', () => {
   let component: ContentsPageComponent;
   let fixture: ComponentFixture<ContentsPageComponent>;
-
+  let firebaseService: FirebaseService;
   beforeEach(async(() => {
+    firebaseService = mock<FirebaseService>(FirebaseService);
+    when(firebaseService.dataInDatabase).thenReturn(of([]));
     TestBed.configureTestingModule({
-      imports: [ TreeModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule,
-        MatTreeModule,
-        MatIconModule,
-        AngularFireAuthModule,
+      imports: [TreeModule,
+        CommonModule,
+        ContentsPageRoutingModule,
       ],
-      declarations: [ ContentsPageComponent ],
+      declarations: [ContentsPageComponent],
       providers: [
-        FirebaseService,
-        DataTreeService,
-        AngularFireAuth,
+        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
       ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,37 +1,36 @@
-import {  async, ComponentFixture, TestBed  } from '@angular/core/testing';
-import {  TreeComponent  } from './tree.component';
-import {  CommonModule  } from '@angular/common';
-import {  FirebaseService  } from '../../services/firebase-service/firebase.service';
-import {  AngularFireModule  } from 'angularfire2';
-import {  AngularFireDatabaseModule  } from 'angularfire2/database';
-import {  environment  } from '../../../environments/environment';
-import {  MatTreeModule  } from '@angular/material/tree';
-import {  MatIconModule  } from '@angular/material/icon';
-import {  DataTreeService  } from './settings/data-tree-service';
-import {  AngularFireAuth, AngularFireAuthModule  } from 'angularfire2/auth';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TreeComponent } from './tree.component';
+import { CommonModule } from '@angular/common';
+import { FirebaseService } from '../../services/firebase-service/firebase.service';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { DataTreeService } from './settings/data-tree-service';
+import { instance, mock, when } from 'ts-mockito';
+import { of } from 'rxjs/internal/observable/of';
 
 describe('TreeComponent', () => {
   let component: TreeComponent;
   let fixture: ComponentFixture<TreeComponent>;
-
+  let firebaseService: FirebaseService;
+  let dataTreeService: DataTreeService;
   beforeEach(async(() => {
+    firebaseService = mock<FirebaseService>(FirebaseService);
+    dataTreeService = mock<DataTreeService>(DataTreeService);
+    when(firebaseService.dataInDatabase).thenReturn(of([]));
+    when(dataTreeService.dataChange).thenReturn(of([]));
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
         MatTreeModule,
         MatIconModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule,
-        AngularFireAuthModule,
       ],
-      declarations: [ TreeComponent ],
+      declarations: [TreeComponent],
       providers: [
-        FirebaseService,
-        DataTreeService,
-        AngularFireAuth,
+        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
+        {provide: DataTreeService, useFactory: () => instance(dataTreeService)},
       ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

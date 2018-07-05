@@ -1,19 +1,24 @@
-import {  Injectable  } from '@angular/core';
-import {  FileNodeClass  } from './file-node.class';
-import {  BehaviorSubject  } from 'rxjs/internal/BehaviorSubject';
+import { Injectable } from '@angular/core';
+import { FileNodeClass } from './file-node.class';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable()
 export class DataTreeService {
-  public dataChange = new BehaviorSubject<FileNodeClass[]>([]);
+  private _dataChange = new BehaviorSubject<FileNodeClass[]>([]);
+
+  public get dataChange(): Observable<FileNodeClass[]> {
+    return this._dataChange.asObservable();
+  }
 
   public get data(): FileNodeClass[] {
-    return this.dataChange.value;
+    return this._dataChange.value;
   }
 
   public initialize(info: string): void {
     const dataObject = JSON.parse(info);
     const data = this.buildFileTree(dataObject, 0);
-    this.dataChange.next(data);
+    this._dataChange.next(data);
   }
 
   public buildFileTree(obj: object, level: number): FileNodeClass[] {

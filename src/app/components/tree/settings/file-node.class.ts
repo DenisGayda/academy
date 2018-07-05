@@ -1,5 +1,5 @@
 export class FileNodeClass {
-    children: FileNodeClass[];
-    filename: string;
-    type: {};
- }
+  children: FileNodeClass[];
+  filename: string;
+  type: {};
+}
