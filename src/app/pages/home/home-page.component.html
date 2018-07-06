@@ -1,1 +1,16 @@
-<div>Home Page</div>
+<h2 class="themefield__title">Latest news</h2>
+<div class="themefield__bar">
+    <button mat-raised-button *ngFor="let button of defaultThemes" (click)="getTheme(button)"
+            class="themefield__button">
+        {{button.toUpperCase()}}
+    </button>
+</div>
+<mat-divider></mat-divider>
+<div class="themefield__container">
+    <mat-card *ngFor="let card of data" class="themefield__card">
+        <h3 *ngIf="(card.title || card.name)" class="themefield__cardTitle">{{(card.title || card.name)}}</h3>
+        <p class="themefield__cardText">{{card.body}}</p>
+        <p *ngIf="card.email" class="themefield__cardAddress">{{card.email}}</p>
+        <mat-card class="themefield__cardId">{{card.id}}</mat-card>
+    </mat-card>
+</div>
