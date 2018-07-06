@@ -3,11 +3,11 @@
   position: relative;
 }
 .search-form-input {
-  width: 30%;
+  width: 100%;
 }
 .searching-select {
   list-style: none;
-  width: 30%;
+  width: 100%;
   box-sizing: border-box;
   padding: 0;
   position: absolute;
@@ -19,6 +19,9 @@
 .searching-select-item {
   background-color: lightgrey;
   padding: 10px;
+  &:hover {
+    background-color: rgb(136, 143, 134);
+  }
 }
 .searchingSelectVisible {
   display: block;

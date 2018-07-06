@@ -12,29 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
 describe('ContentsPageComponent', () => {
-  let component: ContentsPageComponent;
-  let fixture: ComponentFixture<ContentsPageComponent>;
-  let firebaseService: FirebaseService;
-  beforeEach(async(() => {
-    firebaseService = mock<FirebaseService>(FirebaseService);
-    when(firebaseService.dataInDatabase).thenReturn(of([]));
-    TestBed.configureTestingModule({
-      imports: [
-        TreeModule,
-        CommonModule,
-        ContentsPageRoutingModule,
-        BrowserAnimationsModule,
-        SideNavModule,
-        MatIconModule,
-        MatCardModule,
-      ],
-      declarations: [ContentsPageComponent],
-      providers: [
-        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
-      ],
-    })
-      .compileComponents();
-  }));
     let component: ContentsPageComponent;
     let fixture: ComponentFixture<ContentsPageComponent>;
     let firebaseService: FirebaseService;
@@ -42,9 +19,11 @@ describe('ContentsPageComponent', () => {
         firebaseService = mock<FirebaseService>(FirebaseService);
         when(firebaseService.dataInDatabase).thenReturn(of([]));
         TestBed.configureTestingModule({
-            imports: [TreeModule,
+            imports: [
+                TreeModule,
                 CommonModule,
                 ContentsPageRoutingModule,
+                BrowserAnimationsModule,
                 SideNavModule,
                 MatIconModule,
                 MatCardModule,
@@ -54,9 +33,8 @@ describe('ContentsPageComponent', () => {
                 {provide: FirebaseService, useFactory: () => instance(firebaseService)},
             ],
         })
-        .compileComponents();
+            .compileComponents();
     }));
-
     beforeEach(() => {
         fixture = TestBed.createComponent(ContentsPageComponent);
         component = fixture.componentInstance;

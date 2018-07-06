@@ -12,33 +12,33 @@ import { instance, mock, when } from 'ts-mockito';
 import { of } from 'rxjs/internal/observable/of';
 
 describe('TreeComponent', () => {
-  let component: TreeComponent;
-  let fixture: ComponentFixture<TreeComponent>;
-  let firebaseService: FirebaseService;
-  let dataTreeService: DataTreeService;
-  beforeEach(async(() => {
-    firebaseService = mock<FirebaseService>(FirebaseService);
-    dataTreeService = mock<DataTreeService>(DataTreeService);
-    when(firebaseService.dataInDatabase).thenReturn(of([]));
-    when(dataTreeService.dataChange).thenReturn(of([]));
-    TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
-        BrowserAnimationsModule,
-        MatTreeModule,
-        MatIconModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatInputModule,
-      ],
-      declarations: [TreeComponent],
-      providers: [
-        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
-        {provide: DataTreeService, useFactory: () => instance(dataTreeService)},
-      ],
-    })
-          .compileComponents();
-  }));
+    let component: TreeComponent;
+    let fixture: ComponentFixture<TreeComponent>;
+    let firebaseService: FirebaseService;
+    let dataTreeService: DataTreeService;
+    beforeEach(async(() => {
+        firebaseService = mock<FirebaseService>(FirebaseService);
+        dataTreeService = mock<DataTreeService>(DataTreeService);
+        when(firebaseService.dataInDatabase).thenReturn(of([]));
+        when(dataTreeService.dataChange).thenReturn(of([]));
+        TestBed.configureTestingModule({
+            imports: [
+                CommonModule,
+                BrowserAnimationsModule,
+                MatTreeModule,
+                MatIconModule,
+                FormsModule,
+                ReactiveFormsModule,
+                MatInputModule,
+            ],
+            declarations: [TreeComponent],
+            providers: [
+                {provide: FirebaseService, useFactory: () => instance(firebaseService)},
+                {provide: DataTreeService, useFactory: () => instance(dataTreeService)},
+            ],
+        })
+            .compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TreeComponent);
@@ -47,6 +47,6 @@ describe('TreeComponent', () => {
     });
 
     it('should create', () => {
-      expect(component).toBeTruthy();
+        expect(component).toBeTruthy();
     });
 });

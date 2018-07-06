@@ -3,7 +3,7 @@
     <input matInput placeholder="Search in contents" autocomplete="off" (blur)="this.visibleSearchingListBlur()" (focus)="this.visibleSearchingListFocus()" [formControl]="searchingSearcher">
   </mat-form-field>
   <ul class="searching-select" [ngClass]="{searchingSelectVisible:searchingListVisible}">
-    <li class="searching-select-item" *ngFor="let item of this.searchingArray">{{item}}</li>
+    <li class="searching-select-item" *ngFor="let item of this.searchingArray" (click)="this.selectContentsItem($event.target.textContent)">{{item}}</li>
   </ul>
 </form>
 
