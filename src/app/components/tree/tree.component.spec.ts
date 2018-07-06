@@ -9,37 +9,37 @@ import { instance, mock, when } from 'ts-mockito';
 import { of } from 'rxjs/internal/observable/of';
 
 describe('TreeComponent', () => {
-  let component: TreeComponent;
-  let fixture: ComponentFixture<TreeComponent>;
-  let firebaseService: FirebaseService;
-  let dataTreeService: DataTreeService;
-  beforeEach(async(() => {
-    firebaseService = mock<FirebaseService>(FirebaseService);
-    dataTreeService = mock<DataTreeService>(DataTreeService);
-    when(firebaseService.dataInDatabase).thenReturn(of([]));
-    when(dataTreeService.dataChange).thenReturn(of([]));
-    TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
-        MatTreeModule,
-        MatIconModule,
-      ],
-      declarations: [TreeComponent],
-      providers: [
-        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
-        {provide: DataTreeService, useFactory: () => instance(dataTreeService)},
-      ],
+    let component: TreeComponent;
+    let fixture: ComponentFixture<TreeComponent>;
+    let firebaseService: FirebaseService;
+    let dataTreeService: DataTreeService;
+    beforeEach(async(() => {
+        firebaseService = mock<FirebaseService>(FirebaseService);
+        dataTreeService = mock<DataTreeService>(DataTreeService);
+        when(firebaseService.dataInDatabase).thenReturn(of([]));
+        when(dataTreeService.dataChange).thenReturn(of([]));
+        TestBed.configureTestingModule({
+            imports: [
+                CommonModule,
+                MatTreeModule,
+                MatIconModule,
+            ],
+            declarations: [TreeComponent],
+            providers: [
+                {provide: FirebaseService, useFactory: () => instance(firebaseService)},
+                {provide: DataTreeService, useFactory: () => instance(dataTreeService)},
+            ],
     })
-      .compileComponents();
+          .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TreeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TreeComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
 });

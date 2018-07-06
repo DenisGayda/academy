@@ -11,22 +11,23 @@ import { FirebaseService } from '../../services/firebase-service/firebase.servic
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    MatInputModule,
-  ],
-  exports: [
-    HeaderComponent,
-  ],
-  providers: [
-    AngularFireAuth,
-    FirebaseService,
-  ],
-  declarations: [HeaderComponent],
+    imports: [
+        CommonModule,
+        RouterModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
+        MatInputModule,
+    ],
+    exports: [
+        HeaderComponent,
+    ],
+    providers: [
+        AngularFireAuth,
+        FirebaseService,
+    ],
+    declarations: [HeaderComponent],
 })
-export class HeaderModule { }
+export class HeaderModule {
+}
