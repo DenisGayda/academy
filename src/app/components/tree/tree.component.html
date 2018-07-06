@@ -1,3 +1,11 @@
+<form class="search-form">
+  <mat-form-field class="search-form-input">
+    <input matInput placeholder="Search in contents" autocomplete="off" (blur)="this.visibleSearchingListBlur()" (focus)="this.visibleSearchingListFocus()" [formControl]="searchingSearcher">
+  </mat-form-field>
+  <ul class="searching-select" [ngClass]="{searchingSelectVisible:searchingListVisible}">
+    <li class="searching-select-item" *ngFor="let item of this.searchingArray" (click)="this.selectContentsItem($event.target.textContent)">{{item}}</li>
+  </ul>
+</form>
 
 <mat-tree class="tree-container" [dataSource]="dataSource" [treeControl]="treeControl">
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
