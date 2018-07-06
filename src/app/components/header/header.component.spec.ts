@@ -8,6 +8,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebaseService } from '../../services/firebase-service/firebase.service';
 import { instance, mock } from 'ts-mockito';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -24,6 +26,8 @@ describe('HeaderComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
+        BrowserAnimationsModule,
+        MatInputModule,
       ],
       declarations: [HeaderComponent],
       providers: [
