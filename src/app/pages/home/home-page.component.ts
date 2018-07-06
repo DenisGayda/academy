@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NewsSearchService } from '../../services/news-service/news-search.service';
-import { Observable } from 'rxjs/internal/Observable';
+import { NewsInterface } from '../../config/news.interface';
 
 @Component({
     selector: 'app-home-page',
@@ -11,14 +11,14 @@ import { Observable } from 'rxjs/internal/Observable';
 export class HomePageComponent {
 
     public defaultThemes = ['posts', 'comments'];
-    public data: Observable<object>;
+    public data: NewsInterface[];
 
     constructor(private newsService: NewsSearchService) {
     }
 
     public getTheme(theme: string): void {
-        this.newsService.getData$(theme).subscribe((data$: Observable<object>) => {
-           this.data = data$;
+        this.newsService.getData$(theme).subscribe((data: NewsInterface[]) => {
+           this.data = data;
         });
     }
 
