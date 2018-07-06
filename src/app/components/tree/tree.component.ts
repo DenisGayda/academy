@@ -13,16 +13,16 @@ import { transformer } from './settings/helpers/transformer-helpers';
 import { FormControl } from '@angular/forms';
 
 interface TreeInterface {
-  title?: string;
-  contents: {}[];
-  id: string;
-  href?: string;
+    title?: string;
+    contents: {}[];
+    id: string;
+    href?: string;
 }
 
 @Component({
-  selector: 'app-tree',
-  templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.scss'],
+    selector: 'app-tree',
+    templateUrl: './tree.component.html',
+    styleUrls: ['./tree.component.scss'],
 })
 export class TreeComponent implements OnInit {
   public data: {} = {};

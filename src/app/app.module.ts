@@ -10,7 +10,6 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { RoutingModule } from './routing.module';
 import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
-
 import { AppComponent } from './app.component';
 
 @NgModule({

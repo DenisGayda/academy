@@ -26,4 +26,5 @@ import {  FormsModule, ReactiveFormsModule  } from '@angular/forms';
     DataTreeService,
   ],
 })
-export class TreeModule { }
+export class TreeModule {
+}
