@@ -6,7 +6,6 @@ import { NewsInterface } from '../../config/news.interface';
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',
     styleUrls: ['./home-page.component.scss'],
-    providers: [ NewsSearchService ],
 })
 export class HomePageComponent {
 

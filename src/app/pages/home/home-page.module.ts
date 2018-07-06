@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { NewsSearchService } from '../../services/news-service/news-search.service';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
         MatDividerModule,
     ],
     declarations: [HomePageComponent],
+    providers: [NewsSearchService],
 })
 export class HomePageModule {
 }

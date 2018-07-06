@@ -1,23 +1,18 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { instance, mock, when } from 'ts-mockito';
-import { of } from 'rxjs/internal/observable/of';
+import { instance, mock } from 'ts-mockito';
 import { HttpClient } from '@angular/common/http';
 import { NewsSearchService } from './news-search.service';
 
 describe('NewsSearchService', () => {
     let http: HttpClient;
-    let newsSearchService: NewsSearchService;
 
     beforeEach(() => {
         http = mock<HttpClient>(HttpClient);
-        newsSearchService = mock<NewsSearchService>(NewsSearchService);
-
-        when(newsSearchService.getData$).thenReturn((theme: string) => of([]));
 
         TestBed.configureTestingModule({
             providers: [
+                NewsSearchService,
                 {provide: HttpClient, useFactory: () => instance(http)},
-                {provide: NewsSearchService, useFactory: () => instance(newsSearchService)},
             ],
         });
     });

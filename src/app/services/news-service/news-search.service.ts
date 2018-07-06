@@ -4,9 +4,7 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { NewsInterface } from '../../config/news.interface';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class NewsSearchService {
 
     constructor(private http: HttpClient) {

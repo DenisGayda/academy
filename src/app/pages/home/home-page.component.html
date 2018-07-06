@@ -6,7 +6,7 @@
     </button>
 </div>
 <mat-divider></mat-divider>
-<div class="themefield__container">
+<div class="themefield__container" *ngIf="data">
     <mat-card *ngFor="let card of data" class="themefield__card">
         <h3 *ngIf="(card.title || card.name)" class="themefield__cardTitle">{{(card.title || card.name)}}</h3>
         <p class="themefield__cardText">{{card.body}}</p>
