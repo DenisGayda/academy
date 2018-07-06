@@ -2,9 +2,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TreeComponent } from './tree.component';
 import { CommonModule } from '@angular/common';
 import { FirebaseService } from '../../services/firebase-service/firebase.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { DataTreeService } from './settings/data-tree-service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 import { instance, mock, when } from 'ts-mockito';
 import { of } from 'rxjs/internal/observable/of';
 
@@ -21,17 +24,21 @@ describe('TreeComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 CommonModule,
+                BrowserAnimationsModule,
                 MatTreeModule,
                 MatIconModule,
+                FormsModule,
+                ReactiveFormsModule,
+                MatInputModule,
             ],
             declarations: [TreeComponent],
             providers: [
                 {provide: FirebaseService, useFactory: () => instance(firebaseService)},
                 {provide: DataTreeService, useFactory: () => instance(dataTreeService)},
             ],
-    })
-          .compileComponents();
-  }));
+        })
+            .compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TreeComponent);
@@ -40,6 +47,6 @@ describe('TreeComponent', () => {
     });
 
     it('should create', () => {
-      expect(component).toBeTruthy();
+        expect(component).toBeTruthy();
     });
 });
