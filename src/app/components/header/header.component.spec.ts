@@ -12,39 +12,39 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 
 describe('HeaderComponent', () => {
-    let component: HeaderComponent;
-    let fixture: ComponentFixture<HeaderComponent>;
-    let firebaseService: FirebaseService;
-    let angularFireAuth: AngularFireAuth;
-    beforeEach(async(() => {
-        firebaseService = mock<FirebaseService>(FirebaseService);
-        angularFireAuth = mock<AngularFireAuth>(AngularFireAuth);
-        TestBed.configureTestingModule({
-            imports: [
-                RouterTestingModule,
-                ReactiveFormsModule,
-                AngularFireModule.initializeApp(environment.firebase),
-                AngularFireDatabaseModule,
-                AngularFireAuthModule,
-                BrowserAnimationsModule,
-                MatInputModule,
-            ],
-            declarations: [HeaderComponent],
-            providers: [
-                {provide: AngularFireAuth, useFactory: () => instance(angularFireAuth)},
-                {provide: FirebaseService, useFactory: () => instance(firebaseService)},
-            ],
-        })
-        .compileComponents();
-    }));
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
+  let firebaseService: FirebaseService;
+  let angularFireAuth: AngularFireAuth;
+  beforeEach(async(() => {
+    firebaseService = mock<FirebaseService>(FirebaseService);
+    angularFireAuth = mock<AngularFireAuth>(AngularFireAuth);
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+      ],
+      declarations: [HeaderComponent],
+      providers: [
+        {provide: AngularFireAuth, useFactory: () => instance(angularFireAuth)},
+        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
+      ],
+    })
+      .compileComponents();
+  }));
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(HeaderComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
