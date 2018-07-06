@@ -4,15 +4,15 @@ import { SideNavComponent } from './side-nav.component';
 import { TreeModule } from '../tree/tree.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    TreeModule,
-  ],
-  exports: [
-    SideNavComponent,
-  ],
-  providers: [],
-  declarations: [SideNavComponent],
+    imports: [
+        CommonModule,
+        TreeModule,
+    ],
+    exports: [
+        SideNavComponent,
+    ],
+    providers: [],
+    declarations: [SideNavComponent],
 })
 export class SideNavModule {
 }

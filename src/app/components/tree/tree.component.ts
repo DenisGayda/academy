@@ -12,29 +12,29 @@ import { hasChild } from './settings/helpers/has-child-helpers';
 import { transformer } from './settings/helpers/transformer-helpers';
 
 interface TreeInterface {
-  title?: string;
-  contents: {}[];
-  id: string;
-  href?: string;
+    title?: string;
+    contents: {}[];
+    id: string;
+    href?: string;
 }
 
 @Component({
-  selector: 'app-tree',
-  templateUrl: './tree.component.html',
-  styleUrls: ['./tree.component.scss'],
+    selector: 'app-tree',
+    templateUrl: './tree.component.html',
+    styleUrls: ['./tree.component.scss'],
 })
 export class TreeComponent implements OnInit {
-  public data: {} = {};
-  public hasChild = hasChild;
-  public treeControl: FlatTreeControl<FileFlatNodeClass> = new FlatTreeControl<FileFlatNodeClass>(getLevel, isExpandable);
-  public treeFlattener: MatTreeFlattener<FileNodeClass, FileFlatNodeClass> = new MatTreeFlattener(transformer, getLevel, isExpandable, getChildren);
-  public dataSource: MatTreeFlatDataSource<FileNodeClass, FileFlatNodeClass> = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+    public data: {} = {};
+    public hasChild = hasChild;
+    public treeControl: FlatTreeControl<FileFlatNodeClass> = new FlatTreeControl<FileFlatNodeClass>(getLevel, isExpandable);
+    public treeFlattener: MatTreeFlattener<FileNodeClass, FileFlatNodeClass> = new MatTreeFlattener(transformer, getLevel, isExpandable, getChildren);
+    public dataSource: MatTreeFlatDataSource<FileNodeClass, FileFlatNodeClass> = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor(private firebaseService: FirebaseService, private database: DataTreeService) {
-    this.database.dataChange.subscribe(data => this.dataSource.data = data);
-  }
+    constructor(private firebaseService: FirebaseService, private database: DataTreeService) {
+        this.database.dataChange.subscribe(data => this.dataSource.data = data);
+    }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
 
     this.firebaseService.dataInDatabase.subscribe(
       data => {

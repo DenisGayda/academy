@@ -11,35 +11,35 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
 describe('ContentsPageComponent', () => {
-  let component: ContentsPageComponent;
-  let fixture: ComponentFixture<ContentsPageComponent>;
-  let firebaseService: FirebaseService;
-  beforeEach(async(() => {
-    firebaseService = mock<FirebaseService>(FirebaseService);
-    when(firebaseService.dataInDatabase).thenReturn(of([]));
-    TestBed.configureTestingModule({
-      imports: [TreeModule,
-        CommonModule,
-        ContentsPageRoutingModule,
-        SideNavModule,
-        MatIconModule,
-        MatCardModule,
-      ],
-      declarations: [ContentsPageComponent],
-      providers: [
-        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
-      ],
-    })
-      .compileComponents();
-  }));
+    let component: ContentsPageComponent;
+    let fixture: ComponentFixture<ContentsPageComponent>;
+    let firebaseService: FirebaseService;
+    beforeEach(async(() => {
+        firebaseService = mock<FirebaseService>(FirebaseService);
+        when(firebaseService.dataInDatabase).thenReturn(of([]));
+        TestBed.configureTestingModule({
+            imports: [TreeModule,
+                CommonModule,
+                ContentsPageRoutingModule,
+                SideNavModule,
+                MatIconModule,
+                MatCardModule,
+            ],
+            declarations: [ContentsPageComponent],
+            providers: [
+                {provide: FirebaseService, useFactory: () => instance(firebaseService)},
+            ],
+        })
+        .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ContentsPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ContentsPageComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

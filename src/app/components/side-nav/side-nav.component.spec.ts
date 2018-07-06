@@ -7,32 +7,32 @@ import { instance, mock, when } from 'ts-mockito';
 import { of } from 'rxjs/internal/observable/of';
 
 describe('SideNavComponent', () => {
-  let component: SideNavComponent;
-  let fixture: ComponentFixture<SideNavComponent>;
-  let firebaseService: FirebaseService;
-  beforeEach(async(() => {
-    firebaseService = mock<FirebaseService>(FirebaseService);
-    when(firebaseService.dataInDatabase).thenReturn(of([]));
-    TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
-        TreeModule,
-      ],
-      declarations: [SideNavComponent],
-      providers: [
-        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
-      ],
+    let component: SideNavComponent;
+    let fixture: ComponentFixture<SideNavComponent>;
+    let firebaseService: FirebaseService;
+    beforeEach(async(() => {
+        firebaseService = mock<FirebaseService>(FirebaseService);
+        when(firebaseService.dataInDatabase).thenReturn(of([]));
+        TestBed.configureTestingModule({
+            imports: [
+              CommonModule,
+              TreeModule,
+            ],
+            declarations: [SideNavComponent],
+            providers: [
+              {provide: FirebaseService, useFactory: () => instance(firebaseService)},
+            ],
     })
-      .compileComponents();
+            .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SideNavComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+      fixture = TestBed.createComponent(SideNavComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
 });

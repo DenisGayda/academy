@@ -17,18 +17,18 @@ mat-card{
   position: static;
   display: flex;
   min-width: 20%;
-  min-height: 550px;
+  min-height: 80vh;
   padding: 0;
 }
 
 .hide_side_bar{
   padding-left: 10px;
   position: absolute;
-  transform: translateX(-105%);
+  transform: translateX(-92%);
 }
 .add_width_content{
-  width: 100%;
-  padding-left: 10px;
+  flex-grow: 1;
+  padding-left: 30px;
 }
 .show_side_bar{
   display: block;
@@ -63,4 +63,7 @@ mat-card{
 .close-icon{
   font-size: 35px;
   color:red;
+}
+.mat-icon{
+  margin-left: 40%;
 }

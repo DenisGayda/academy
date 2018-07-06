@@ -1,22 +1,17 @@
 
 <div class="contents-main-container">
-  <mat-card  [ngClass]="{hide_side_bar:swoSB === true}">
+  <mat-card  [ngClass]="{hide_side_bar:showSB === true}">
     <app-side-nav>
     </app-side-nav>
     <div class="side_bar_button_container">
       <button class="show_side_bar" (click)="onShowSideBar()">
         <mat-icon class="mat-icon-rtl-mirror close-icon">
-          {{'chevron_left'}}
+          {{showSB ? 'chevron_right': 'chevron_left'}}
         </mat-icon>
       </button>
     </div>
   </mat-card>
-  <div class="contents-data-container" [ngClass]="{add_width_content:swoSB === false}">
-    <button (click)="onShowSideBar()" *ngIf="swoSB === true" class="open_side_nav">
-      <mat-icon class="mat-icon-rtl-mirror open-icon">
-        {{'chevron_right'}}
-      </mat-icon>
-    </button>
+  <div class="contents-data-container" [ngClass]="{add_width_content:showSB === true}">
     <p>CONTENTS</p>
   </div>
 </div>

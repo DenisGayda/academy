@@ -7,14 +7,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ContentsPageRoutingModule,
-    SideNavModule,
-    MatCardModule,
-    MatIconModule,
-  ],
-  declarations: [ContentsPageComponent],
+    imports: [
+        CommonModule,
+        ContentsPageRoutingModule,
+        SideNavModule,
+        MatCardModule,
+        MatIconModule,
+    ],
+    declarations: [ContentsPageComponent],
 })
 
 export class ContentsPageModule {
