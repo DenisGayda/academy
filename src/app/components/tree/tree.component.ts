@@ -36,18 +36,18 @@ export class TreeComponent implements OnInit {
 
     ngOnInit(): void {
 
-    this.firebaseService.dataInDatabase.subscribe(
-      data => {
-        data.map((language: TreeInterface, iL) => {
-          this.data[language.title] = {};
-          language.contents.map((part: TreeInterface, iP) => {
-            this.data[language.title][part.title] = {};
-            part.contents.map((lessons: TreeInterface, iLS) => {
-              this.data[language.title][part.title][`${lessons.title}`] = `Read ${lessons.title}`;
+        this.firebaseService.dataInDatabase.subscribe(
+            data => {
+                data.map((language: TreeInterface, iL) => {
+                    this.data[language.title] = {};
+                    language.contents.map((part: TreeInterface, iP) => {
+                        this.data[language.title][part.title] = {};
+                        part.contents.map((lessons: TreeInterface, iLS) => {
+                            this.data[language.title][part.title][`${lessons.title}`] = `Read ${lessons.title}`;
+                        });
+                    });
+                });
+                this.database.initialize(JSON.stringify(this.data));
             });
-          });
-        });
-        this.database.initialize(JSON.stringify(this.data));
-      });
-  }
+    }
 }
