@@ -1,0 +1,69 @@
+.contents-main-container{
+  display:flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+.contents-data-container{
+  width: 80%;
+  padding-left: 10px;
+}
+app-side-nav{
+  width: 90%;
+  align-items: stretch;
+  padding: 15px;
+}
+mat-card{
+  background: #fbfbfb;
+  position: static;
+  display: flex;
+  min-width: 20%;
+  min-height: 80vh;
+  padding: 0;
+}
+
+.hide_side_bar{
+  padding-left: 10px;
+  position: absolute;
+  transform: translateX(-92%);
+}
+.add_width_content{
+  flex-grow: 1;
+  padding-left: 30px;
+}
+.show_side_bar{
+  display: block;
+  position: relative;
+  width: 50px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.show_side_bar:active{
+  outline: none;
+  border:none;
+}
+.side_bar_button_container{
+  display: flex;
+  align-items: center;
+}
+.open_side_nav{
+  cursor: pointer;
+  font-size: 20px;
+  color:red;
+  background: none;
+  border:none;
+  display: block;
+  position: absolute;
+  top: 50%;
+}
+.open-icon{
+  font-size: 35px;
+}
+
+.close-icon{
+  font-size: 35px;
+  color:red;
+}
+.mat-icon{
+  margin-left: 40%;
+}

@@ -6,46 +6,48 @@ import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable()
 export class FirebaseService {
-  private _dataInDatabase: Observable<{}[]>;
-  constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) { }
+    private _dataInDatabase: Observable<{}[]>;
 
-  public get dataInDatabase(): Observable<{}[]> {
-    return this._dataInDatabase = this.db.list('/courses').valueChanges();
-  }
+    constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) {
+    }
 
-  public setDataInDatabase(url: string, key: string, value: {}): void {
-    this.db.list(url).update(key, value);
-  }
+    public get dataInDatabase(): Observable<{}[]> {
+        return this._dataInDatabase = this.db.list('/Titles').valueChanges();
+    }
 
-  public removeDataInDatabase(url: string, key: string): void {
-    this.db.list(url).remove(key);
-  }
+    public setDataInDatabase(url: string, key: string, value: {}): void {
+        this.db.list(url).update(key, value);
+    }
 
-  public updateDataInDatabase(url: string, key: string, value: {}): void {
-    this.db.list(url).update(key, value);
-  }
+    public removeDataInDatabase(url: string, key: string): void {
+        this.db.list(url).remove(key);
+    }
 
-  public loginWithGoogle(): void {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-  }
+    public updateDataInDatabase(url: string, key: string, value: {}): void {
+        this.db.list(url).update(key, value);
+    }
 
-  public loginWithGithub(): void {
-    this.afAuth.auth.signInWithPopup(new auth.GithubAuthProvider());
-  }
+    public loginWithGoogle(): void {
+        this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    }
 
-  public logout(): void {
-    this.afAuth.auth.signOut();
-  }
+    public loginWithGithub(): void {
+        this.afAuth.auth.signInWithPopup(new auth.GithubAuthProvider());
+    }
 
-  public login(email: string, password: string): Promise<{}> {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
-  }
+    public logout(): void {
+        this.afAuth.auth.signOut();
+    }
 
-  public signup(email: string, password: string): Promise<{}> {
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-  }
+    public login(email: string, password: string): Promise<{}> {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    }
 
-  public get user(): Observable<User> {
-    return this.afAuth.user;
-  }
+    public signup(email: string, password: string): Promise<{}> {
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    public get user(): Observable<User> {
+        return this.afAuth.user;
+    }
 }
