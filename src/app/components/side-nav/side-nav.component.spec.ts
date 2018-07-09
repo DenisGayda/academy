@@ -1,42 +1,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ContentsPageComponent } from './contents-page.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TreeModule } from '../../components/tree/tree.module';
-import { ContentsPageRoutingModule } from './contents-page-routing.module';
+import { SideNavComponent } from './side-nav.component';
 import { CommonModule } from '@angular/common';
+import { TreeModule } from '../tree/tree.module';
 import { FirebaseService } from '../../services/firebase-service/firebase.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { instance, mock, when } from 'ts-mockito';
 import { of } from 'rxjs/internal/observable/of';
-import { SideNavModule } from '../../components/side-nav/side-nav.module';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
 
-describe('ContentsPageComponent', () => {
-    let component: ContentsPageComponent;
-    let fixture: ComponentFixture<ContentsPageComponent>;
+describe('SideNavComponent', () => {
+    let component: SideNavComponent;
+    let fixture: ComponentFixture<SideNavComponent>;
     let firebaseService: FirebaseService;
     beforeEach(async(() => {
         firebaseService = mock<FirebaseService>(FirebaseService);
         when(firebaseService.dataInDatabase).thenReturn(of([]));
         TestBed.configureTestingModule({
             imports: [
-                TreeModule,
                 CommonModule,
-                ContentsPageRoutingModule,
+                TreeModule,
                 BrowserAnimationsModule,
-                SideNavModule,
-                MatIconModule,
-                MatCardModule,
             ],
-            declarations: [ContentsPageComponent],
+            declarations: [SideNavComponent],
             providers: [
                 {provide: FirebaseService, useFactory: () => instance(firebaseService)},
             ],
         })
             .compileComponents();
     }));
+
     beforeEach(() => {
-        fixture = TestBed.createComponent(ContentsPageComponent);
+        fixture = TestBed.createComponent(SideNavComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
