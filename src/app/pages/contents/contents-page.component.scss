@@ -1,23 +1,26 @@
+
+
 .contents-main-container{
-  display:flex;
+  display: flex;
   flex-direction: row;
-  align-items: stretch;
+  height: 100%;
+  position: absolute;
 }
 .contents-data-container{
-  width: 80%;
+  width: 100%;
   padding-left: 10px;
 }
 app-side-nav{
-  width: 90%;
+  width: 100%;
   align-items: stretch;
-  padding: 15px;
 }
 mat-card{
   background: #fbfbfb;
   position: static;
+  flex-direction: row;
   display: flex;
-  min-width: 20%;
-  min-height: 80vh;
+  min-width: 270px;
+  height: 100%;
   padding: 0;
 }
 
@@ -33,10 +36,11 @@ mat-card{
 .show_side_bar{
   display: block;
   position: relative;
-  width: 50px;
   cursor: pointer;
   border: none;
   background: none;
+  outline: none;
+  margin-left: -12px;
 }
 .show_side_bar:active{
   outline: none;
@@ -45,6 +49,7 @@ mat-card{
 .side_bar_button_container{
   display: flex;
   align-items: center;
+  width: 20px;
 }
 .open_side_nav{
   cursor: pointer;
@@ -65,5 +70,9 @@ mat-card{
   color:red;
 }
 .mat-icon{
-  margin-left: 40%;
+  margin-left: -10%;
+}
+
+.margin_chevron_left{
+  margin-right: 10px;
 }

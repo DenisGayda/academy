@@ -1,11 +1,11 @@
 
 <div class="contents-main-container">
   <mat-card  [ngClass]="{hide_side_bar:showSB === true}">
-    <app-side-nav>
+    <app-side-nav class="test" >
     </app-side-nav>
     <div class="side_bar_button_container">
-      <button class="show_side_bar" (click)="onShowSideBar()">
-        <mat-icon class="mat-icon-rtl-mirror close-icon">
+      <button class="show_side_bar" (click)="onShowSideBar()" [ngClass]="{margin_chevron_left: showSB === false}">
+        <mat-icon class="mat-icon-rtl-mirror close-icon" >
           {{showSB ? 'chevron_right': 'chevron_left'}}
         </mat-icon>
       </button>
