@@ -11,29 +11,31 @@ import { FirebaseService } from './services/firebase-service/firebase.service';
 import { instance, mock } from 'ts-mockito';
 
 describe('AppComponent', () => {
-  let firebaseService: FirebaseService;
-  beforeEach(fakeAsync(() => {
-    firebaseService = mock<FirebaseService>(FirebaseService);
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        FooterModule,
-        HeaderModule,
-        BrowserAnimationsModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule,
-      ],
-      declarations: [
-        AppComponent,
-      ],
-      providers: [
-        {provide: FirebaseService, useFactory: () => instance(firebaseService)},
-      ],
-      }).compileComponents();
-  }));
-  it('should create the app', fakeAsync(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+    let firebaseService: FirebaseService;
+
+    beforeEach(fakeAsync(() => {
+        firebaseService = mock<FirebaseService>(FirebaseService);
+
+        TestBed.configureTestingModule({
+            imports: [
+                RouterTestingModule,
+                FooterModule,
+                HeaderModule,
+                BrowserAnimationsModule,
+                AngularFireModule.initializeApp(environment.firebase),
+                AngularFireDatabaseModule,
+            ],
+            declarations: [
+                AppComponent,
+            ],
+            providers: [
+                {provide: FirebaseService, useFactory: () => instance(firebaseService)},
+            ],
+        }).compileComponents();
+    }));
+    it('should create the app', fakeAsync(() => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+        expect(app).toBeTruthy();
+    }));
 });
