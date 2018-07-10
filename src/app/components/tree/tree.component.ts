@@ -35,6 +35,7 @@ export class TreeComponent implements OnInit {
     public searchingArray: String[] = [];
     public searchingListVisible = false;
     public formValue: String;
+    public id: string;
 
     constructor(private firebaseService: FirebaseService, private database: DataTreeService) {
         this.database.dataChange.subscribe(data => this.dataSource.data = data);
@@ -52,7 +53,7 @@ export class TreeComponent implements OnInit {
                         this.data[language.title][part.title] = {};
                         this.titleArray.push(part.title);
                         part.contents.map((lessons: TreeInterface, iLS) => {
-                            this.data[language.title][part.title][`${lessons.title}`] = `Read ${lessons.title}`;
+                            this.data[language.title][part.title][`${lessons.id}`] = lessons.title;
                             this.titleArray.push(lessons.title);
                         });
                     });
@@ -83,5 +84,10 @@ export class TreeComponent implements OnInit {
     }
 
     public selectContentsItem(text: String): void {
+
+    }
+
+    public getId(id: string): void {
+        this.id = id;
     }
 }

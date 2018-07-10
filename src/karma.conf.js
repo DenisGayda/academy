@@ -25,7 +25,15 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: [
+      'ChromeHeadless_without_security'
+    ],
+    customLaunchers: {
+      ChromeHeadless_without_security: {
+        base: 'ChromeHeadless',
+        flags: ['--disable-web-security'],
+      },
+    },
     singleRun: false
   });
 };
