@@ -40,3 +40,12 @@
 mat-tree {
   background: #fbfbfb;
 }
+.open_lesson_link{
+  cursor: pointer;
+}
+.open_lesson_link:hover{
+  color:red;
+}
+button{
+  outline: none;
+}
