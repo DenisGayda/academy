@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { RoutingModule } from './routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
         BrowserAnimationsModule,
         FormsModule,
         MonacoEditorModule.forRoot(),
+        HttpClientModule,
         RoutingModule,
         HeaderModule,
         FooterModule,
