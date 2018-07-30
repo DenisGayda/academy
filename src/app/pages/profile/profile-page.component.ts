@@ -42,9 +42,9 @@ export class ProfilePageComponent implements OnInit {
 
     public createForm(): void {
         this.userForm = new FormGroup({
-            userName: new FormControl('', Validators.required),
-            userEmail: new FormControl('',
-                [Validators.required, Validators.pattern('[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}')]),
+            userName: new FormControl(null, null),
+            userEmail: new FormControl(null,
+                null),
             userAdress: new FormControl('', Validators.required),
             userPhone: new FormControl('+3', Validators.required),
         });
@@ -58,13 +58,13 @@ export class ProfilePageComponent implements OnInit {
         }, time);
     }
 
-    public createUserData(): void {
+    public createUserData(name: string, email: string): void {
         this.hiddenSuccessBlock = false;
         this.userName = this.userForm.value.userName;
         this.userEmail = this.userForm.value.userEmail;
         this.userAdress = this.userForm.value.userAdress;
         this.userPhone = this.userForm.value.userPhone;
-        const userData: IUser = new User(this.userName, this.userEmail, this.userAdress, this.userPhone);
+        const userData: IUser = new User(name, email, this.userAdress, this.userPhone);
         this.firebaseService.setDataInDatabase('/Users', this.generateIdForUser(), userData);
         this.hiddenForm = !this.hiddenForm;
         this.showSuccessBlock();

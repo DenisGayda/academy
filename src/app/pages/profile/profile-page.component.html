@@ -3,15 +3,16 @@
 </div>
 
 <div class="form-container" *ngIf="hiddenForm === false">
-    <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="createUserData(); userForm.reset()"  autocomplete="off" *ngIf="this.user | async as user">
+    <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="createUserData(name.value, email.value); userForm.reset()"  autocomplete="off" *ngIf="this.user | async as user">
+
         <p class="title">It's your profile</p>
 
         <mat-form-field>
-            <input matInput placeholder="Name" formControlName="userName" >
+            <input matInput #name [value]="user.displayName" readonly placeholder="Name" formControlName="userName" >
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="email" placeholder="email" formControlName="userEmail">
+            <input matInput #email [value]="user.email" readonly type="email" placeholder="email" formControlName="userEmail">
         </mat-form-field>
 
         <mat-form-field>
