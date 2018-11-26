@@ -3,10 +3,12 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth, User } from 'firebase';
 import { Observable } from 'rxjs/internal/Observable';
+import { IUser } from '../../model/user-profile.interface';
 
 @Injectable()
 export class FirebaseService {
     private _dataInDatabase: Observable<{}[]>;
+    private _dataInUsers: Observable<{}[]>;
 
     constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) {
     }
@@ -15,7 +17,11 @@ export class FirebaseService {
         return this._dataInDatabase = this.db.list('/Titles').valueChanges();
     }
 
-    public setDataInDatabase(url: string, key: string, value: {}): void {
+    public get dataInUsers(): Observable<{}[]> {
+        return this._dataInUsers = this.db.list('/Users').valueChanges();
+    }
+
+    public setDataInDatabase(url: string, key: string, value: IUser): void {
         this.db.list(url).update(key, value);
     }
 

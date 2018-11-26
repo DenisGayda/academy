@@ -1,1 +1,27 @@
-<p>It's your profile</p>
+<div class="success-form" *ngIf="hiddenSuccessBlock === false">
+    <p>form is done</p>
+</div>
+
+<div class="form-container" *ngIf="hiddenForm === false">
+    <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="createUserData(name.value, email.value); userForm.reset()"  autocomplete="off" *ngIf="this.user | async as user">
+
+        <p class="title">It's your profile</p>
+
+        <mat-form-field>
+            <input matInput #name [value]="user.displayName" readonly placeholder="Name" formControlName="userName" >
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput #email [value]="user.email" readonly type="email" placeholder="email" formControlName="userEmail">
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput placeholder="adress" formControlName="userAdress"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="tel" placeholder="Phone number" formControlName="userPhone">
+        </mat-form-field>
+        <button mat-button [disabled]="userForm.invalid" type="submit" class="user-data-save-btn">Save user data</button>
+    </form>
+</div>
