@@ -46,7 +46,7 @@ export class ProfilePageComponent implements OnInit {
         const email = this.firebaseService.userEmail;
         const address = this.userForm.value.userAdress;
         const phone = this.userForm.value.userPhone;
-        const newInfo: IUser = new UserInDB(name, email, address, phone);
+        const newInfo: IUser = new UserInDB(name, email, address, phone, 'default');
 
         this.firebaseService.setDataInDatabase('/Users', this.firebaseService.userId, newInfo);
 

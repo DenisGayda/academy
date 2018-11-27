@@ -7,14 +7,20 @@
         <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="createUserData(); userForm.reset()"  autocomplete="off" *ngIf="this.userFromDB | async as user">
 
             <p class="title">It's your profile</p>
+            <div class="user-info">
+                <div class="user-image">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/account-profile-avatar-man-circle-round-user-30452.png">
+                </div>
+                <div class="user-name-and-email">
+                    <mat-form-field>
+                        <input matInput #name [value]="user.name" placeholder="Name" formControlName="userName" >
+                    </mat-form-field>
 
-            <mat-form-field>
-                <input matInput #name [value]="user.name" placeholder="Name" formControlName="userName" >
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput #email [value]="user.email" type="email" placeholder="email" formControlName="userEmail">
-            </mat-form-field>
+                    <mat-form-field>
+                        <input matInput #email [value]="user.email" readonly type="email" placeholder="email" formControlName="userEmail">
+                    </mat-form-field>
+                </div>
+            </div>
 
             <mat-form-field>
                 <input matInput [value]="user.adress" type="text" placeholder="adress" formControlName="userAdress">
