@@ -14,6 +14,7 @@ export class ProfilePageComponent implements OnInit {
     public hiddenForm = false;
     public hiddenSuccessBlock: boolean;
     public userFromDB;
+    public user: IUser;
 
     constructor(private firebaseService: FirebaseService) {
     }
@@ -23,11 +24,12 @@ export class ProfilePageComponent implements OnInit {
     }
 
     public createForm(): void {
+        const maxNameLength = 100;
         this.userForm = new FormGroup({
-            userName: new FormControl(null, null),
-            userEmail: new FormControl(null, null),
-            userAdress: new FormControl(null, Validators.required),
-            userPhone: new FormControl(null, Validators.required),
+            userName: new FormControl(),
+            userEmail: new FormControl(),
+            userAdress: new FormControl(),
+            userPhone: new FormControl(),
         });
     }
 
@@ -42,11 +44,12 @@ export class ProfilePageComponent implements OnInit {
     public createUserData(): void {
         this.hiddenSuccessBlock = false;
 
-        const name = this.userForm.value.userName;
-        const email = this.firebaseService.userEmail;
-        const address = this.userForm.value.userAdress;
-        const phone = this.userForm.value.userPhone;
-        const newInfo: IUser = new UserInDB(name, email, address, phone, 'default');
+        const name = this.userForm.get('userName').value || this.user.name;
+        const email = this.userForm.get('userEmail').value || this.user.email;
+        const address = this.userForm.get('userAdress').value || this.user.adress;
+        const phone = this.userForm.get('userPhone').value || this.user.phone;
+
+        const newInfo: IUser = new UserInDB(name, email, address, phone);
 
         this.firebaseService.setDataInDatabase('/Users', this.firebaseService.userId, newInfo);
 
@@ -60,6 +63,12 @@ export class ProfilePageComponent implements OnInit {
 
         if (this.firebaseService.userId) {
             this.userFromDB = this.firebaseService.getCurrentUserFromDB();
+
+            this.userFromDB.subscribe(user => {
+                if (user) {
+                    this.user = new UserInDB(user.name, user.email, user.adress, user.phone, user.photoURL);
+                }
+            });
 
             return true;
         }

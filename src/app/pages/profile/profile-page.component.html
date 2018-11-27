@@ -4,16 +4,17 @@
 
 <div class="form-container" *ngIf="hiddenForm === false">
     <div *ngIf="isReady()" class="form-container">
-        <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="createUserData(); userForm.reset()"  autocomplete="off" *ngIf="this.userFromDB | async as user">
+        <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="createUserData(); userForm.reset()" autocomplete="off"
+              *ngIf="this.userFromDB | async as user">
 
             <p class="title">It's your profile</p>
             <div class="user-info">
                 <div class="user-image">
-                    <img src="https://cdn.iconscout.com/icon/free/png-256/account-profile-avatar-man-circle-round-user-30452.png">
+                    <img [src]="user.photoURL">
                 </div>
                 <div class="user-name-and-email">
                     <mat-form-field>
-                        <input matInput #name [value]="user.name" placeholder="Name" formControlName="userName" >
+                        <input matInput #name [value]="user.name" placeholder="Name" formControlName="userName">
                     </mat-form-field>
 
                     <mat-form-field>
@@ -30,7 +31,8 @@
                 <input matInput [value]="user.phone" type="tel" placeholder="Phone number" formControlName="userPhone">
             </mat-form-field>
 
-            <button mat-button [disabled]="userForm.invalid" type="submit" class="user-data-save-btn">Save user data</button>
+            <button mat-button [disabled]="userForm.invalid" type="submit" class="user-data-save-btn">Save user data
+            </button>
 
         </form>
     </div>
