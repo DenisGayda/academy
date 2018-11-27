@@ -71,6 +71,14 @@ export class FirebaseService {
         return this.afAuth.user;
     }
 
+    public getCurrentUserFromDB(): Observable<IUser> {
+        if (!this.userId) { return null; }
+
+        this.currentUser = this.db.object(`Users/${this.userId}`);
+
+        return this.currentUser.valueChanges();
+    }
+
     private createUserInDB(): void {
         this.afAuth.authState.subscribe(user => {
             if (user) {
