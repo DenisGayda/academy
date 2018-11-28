@@ -59,7 +59,7 @@ export class ProfilePageComponent implements OnInit {
          return new FormGroup({
             userName: new FormControl(),
             userEmail: new FormControl(),
-            userAdress: new FormControl(),
+            userAddress: new FormControl(),
             userPhone: new FormControl(),
         });
     }
@@ -75,12 +75,7 @@ export class ProfilePageComponent implements OnInit {
     public updateUserData(): void {
         this.hiddenSuccessBlock = false;
 
-        const name = this.userForm.get('userName').value || this.user.name;
-        const email = this.userForm.get('userEmail').value || this.user.email;
-        const address = this.userForm.get('userAdress').value || this.user.adress;
-        const phone = this.userForm.get('userPhone').value || this.user.phone;
-
-        const newInfo: IUser = new UserInDB(name, email, address, phone);
+        const newInfo: IUser = this.getUserFormInfo();
 
         this.firebaseService.setDataInDatabase('/Users', this.firebaseService.userId, newInfo);
 
@@ -105,5 +100,14 @@ export class ProfilePageComponent implements OnInit {
         }
 
         return false;
+    }
+
+    public getUserFormInfo(): IUser {
+        const name = this.userForm.get('userName').value || this.user.name;
+        const email = this.userForm.get('userEmail').value || this.user.email;
+        const address = this.userForm.get('userAddress').value || this.user.adress;
+        const phone = this.userForm.get('userPhone').value || this.user.phone;
+
+        return new UserInDB(name, email, address, phone);
     }
 }
