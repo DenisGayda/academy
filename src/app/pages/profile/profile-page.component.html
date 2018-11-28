@@ -1,20 +1,19 @@
 <div class="success-form" *ngIf="hiddenSuccessBlock === false">
-    <p>form is done</p>
+    <p>Данные успешно сохранены</p>
 </div>
 
 <div class="form-container">
     <div *ngIf="isReady()" class="form-container">
         <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="updateUserData();" autocomplete="off"
               *ngIf="this.userFromDB | async as user">
-
-            <p class="title">It's your profile</p>
+            <h1 class="title">Профиль</h1>
             <div class="user-info">
                 <div class="user-image">
                     <img [src]="user.photoURL">
                 </div>
                 <div class="user-name-and-email">
                     <mat-form-field>
-                        <input matInput #name [value]="user.name" placeholder="Name" formControlName="userName">
+                        <input matInput #name [value]="user.name" placeholder="имя" formControlName="userName">
                     </mat-form-field>
 
                     <mat-form-field>
@@ -24,14 +23,14 @@
             </div>
 
             <mat-form-field>
-                <input matInput [value]="user.adress" type="text" placeholder="adress" formControlName="userAdress">
+                <input matInput [value]="user.adress" type="text" placeholder="адресс" formControlName="userAdress">
             </mat-form-field>
 
             <mat-form-field>
-                <input matInput [value]="user.phone" type="tel" placeholder="Phone number" formControlName="userPhone">
+                <input matInput [value]="user.phone" type="tel" placeholder="телефон" formControlName="userPhone">
             </mat-form-field>
 
-            <button mat-button [disabled]="userForm.invalid" type="submit" class="user-data-save-btn">Save user data</button>
+            <button mat-button [disabled]="userForm.invalid" type="submit" class="user-data-save-btn">Сохранить данные</button>
 
         </form>
     </div>
