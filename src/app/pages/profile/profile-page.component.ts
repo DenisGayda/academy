@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase-service/firebase.service';
 import { IUser } from '../../model/user-profile.interface';
 import { UserInDB } from '../../model/user-profile.class';
+import {Observable} from 'rxjs/internal/Observable';
 
 @Component({
     selector: 'app-profile-page',
@@ -10,22 +11,52 @@ import { UserInDB } from '../../model/user-profile.class';
     styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePageComponent implements OnInit {
-    public userForm: FormGroup;
-    public hiddenForm = false;
-    public hiddenSuccessBlock: boolean;
-    public userFromDB;
-    public user: IUser;
+    private _userForm: FormGroup;
+    private _hiddenSuccessBlock: boolean;
+    private _userFromDB: Observable<IUser>;
+    private _user: IUser;
 
     constructor(private firebaseService: FirebaseService) {
     }
 
     ngOnInit(): void {
-        this.createForm();
+        this.userForm = this.createForm();
     }
 
-    public createForm(): void {
-        const maxNameLength = 100;
-        this.userForm = new FormGroup({
+    get userForm(): FormGroup {
+        return this._userForm;
+    }
+
+    set userForm(value: FormGroup) {
+        this._userForm = value;
+    }
+
+    get hiddenSuccessBlock(): boolean {
+        return this._hiddenSuccessBlock;
+    }
+
+    set hiddenSuccessBlock(value: boolean) {
+        this._hiddenSuccessBlock = value;
+    }
+
+    get userFromDB(): Observable<IUser> {
+        return this._userFromDB;
+    }
+
+    set userFromDB(value: Observable<IUser>) {
+        this._userFromDB = value;
+    }
+
+    get user(): IUser {
+        return this._user;
+    }
+
+    set user(value: IUser) {
+        this._user = value;
+    }
+
+    public createForm(): FormGroup {
+         return new FormGroup({
             userName: new FormControl(),
             userEmail: new FormControl(),
             userAdress: new FormControl(),
@@ -41,7 +72,7 @@ export class ProfilePageComponent implements OnInit {
         }, time);
     }
 
-    public createUserData(): void {
+    public updateUserData(): void {
         this.hiddenSuccessBlock = false;
 
         const name = this.userForm.get('userName').value || this.user.name;

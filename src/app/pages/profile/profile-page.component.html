@@ -2,9 +2,9 @@
     <p>form is done</p>
 </div>
 
-<div class="form-container" *ngIf="hiddenForm === false">
+<div class="form-container">
     <div *ngIf="isReady()" class="form-container">
-        <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="createUserData(); userForm.reset()" autocomplete="off"
+        <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="updateUserData();" autocomplete="off"
               *ngIf="this.userFromDB | async as user">
 
             <p class="title">It's your profile</p>
@@ -31,8 +31,7 @@
                 <input matInput [value]="user.phone" type="tel" placeholder="Phone number" formControlName="userPhone">
             </mat-form-field>
 
-            <button mat-button [disabled]="userForm.invalid" type="submit" class="user-data-save-btn">Save user data
-            </button>
+            <button mat-button [disabled]="userForm.invalid" type="submit" class="user-data-save-btn">Save user data</button>
 
         </form>
     </div>
