@@ -10,17 +10,33 @@ import {UserInDB} from '../../model/user-profile.class';
 export class FirebaseService {
     private _dataInDatabase: Observable<{}[]>;
     private _dataInUsers: Observable<{}>;
-    public userId: string;
-    public userEmail: string;
-    public currentUser: AngularFireObject<IUser>;
+    private _userId: string;
+    private _userEmail: string;
+    private _currentUser: AngularFireObject<IUser>;
 
     constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) {
         this.afAuth.authState.subscribe(user => {
             if (user) {
-                this.userId = user.uid;
-                this.userEmail = user.email;
+                this._userId = user.uid;
+                this._userEmail = user.email;
             }
         });
+    }
+
+    public get user(): Observable<User> {
+        return this.afAuth.user;
+    }
+
+    public get userId(): string {
+        return this._userId;
+    }
+
+    public get userEmail(): string {
+        return this._userEmail;
+    }
+
+    public get currentUser(): AngularFireObject<IUser> {
+        return this._currentUser;
     }
 
     public get dataInDatabase(): Observable<{}[]> {
@@ -67,16 +83,12 @@ export class FirebaseService {
         return promise;
     }
 
-    public get user(): Observable<User> {
-        return this.afAuth.user;
-    }
-
     public getCurrentUserFromDB(): Observable<IUser> {
-        if (!this.userId) { return null; }
+        if (!this._userId) { return null; }
 
-        this.currentUser = this.db.object(`Users/${this.userId}`);
+        this._currentUser = this.db.object(`Users/${this._userId}`);
 
-        return this.currentUser.valueChanges();
+        return this._currentUser.valueChanges();
     }
 
     private createUserInDB(): void {
