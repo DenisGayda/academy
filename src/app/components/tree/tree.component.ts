@@ -44,7 +44,7 @@ export class TreeComponent implements OnInit {
     ngOnInit(): void {
         this.titleArray = [];
         this.searchingArray = [];
-        this.firebaseService.dataInDatabase.subscribe(
+        this.firebaseService.dataInDatabase$.subscribe(
             data => {
                 data.map((language: TreeInterface, iL) => {
                     this.data[language.title] = {};

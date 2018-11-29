@@ -1,1 +1,37 @@
-<p>It's your profile</p>
+<div class="success-form" *ngIf="hiddenSuccessBlock === false">
+    <p>Данные успешно сохранены</p>
+</div>
+
+<div class="form-container">
+    <div *ngIf="isReady()" class="form-container">
+        <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="updateUserData();" autocomplete="off"
+              *ngIf="this.userFromDB$ | async as user">
+            <h1 class="title">Профиль</h1>
+            <div class="user-info">
+                <div class="user-image">
+                    <img [src]="user.photoURL">
+                </div>
+                <div class="user-name-and-email">
+                    <mat-form-field>
+                        <input matInput #name [value]="user.name" placeholder="имя" formControlName="userName">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput #email [value]="user.email" readonly type="email" placeholder="email" formControlName="userEmail">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <mat-form-field>
+                <input matInput [value]="user.adress" type="text" placeholder="адресс" formControlName="userAddress">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [value]="user.phone" type="tel" placeholder="телефон" formControlName="userPhone">
+            </mat-form-field>
+
+            <button mat-button [disabled]="userForm.invalid" type="submit" class="user-data-save-btn">Сохранить данные</button>
+
+        </form>
+    </div>
+</div>
