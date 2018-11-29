@@ -8,11 +8,11 @@ import {UserInDB} from '../../model/user-profile.class';
 
 @Injectable()
 export class FirebaseService {
-    private _dataInDatabase: Observable<{}[]>;
-    private _dataInUsers: Observable<{}>;
+    private _dataInDatabase$: Observable<{}[]>;
+    private _dataInUsers$: Observable<{}>;
     private _userId: string;
     private _userEmail: string;
-    private _currentUser: AngularFireObject<IUser>;
+    private _currentUser$: AngularFireObject<IUser>;
 
     constructor(private db: AngularFireDatabase, public afAuth: AngularFireAuth) {
         this.afAuth.authState.subscribe(user => {
@@ -35,16 +35,16 @@ export class FirebaseService {
         return this._userEmail;
     }
 
-    public get currentUser(): AngularFireObject<IUser> {
-        return this._currentUser;
+    public get currentUser$(): AngularFireObject<IUser> {
+        return this._currentUser$;
     }
 
-    public get dataInDatabase(): Observable<{}[]> {
-        return this._dataInDatabase = this.db.list('/Titles').valueChanges();
+    public get dataInDatabase$(): Observable<{}[]> {
+        return this._dataInDatabase$ = this.db.list('/Titles').valueChanges();
     }
 
-    public get dataInUsers(): Observable<{}> {
-        return this._dataInUsers = this.db.list('/Users').valueChanges();
+    public get dataInUsers$(): Observable<{}> {
+        return this._dataInUsers$ = this.db.list('/Users').valueChanges();
     }
 
     public setDataInDatabase(url: string, key: string, value: IUser): void {
@@ -83,12 +83,12 @@ export class FirebaseService {
         return promise;
     }
 
-    public getCurrentUserFromDB(): Observable<IUser> {
+    public getCurrentUserFromDB$(): Observable<IUser> {
         if (!this._userId) { return null; }
 
-        this._currentUser = this.db.object(`Users/${this._userId}`);
+        this._currentUser$ = this.db.object(`Users/${this._userId}`);
 
-        return this._currentUser.valueChanges();
+        return this._currentUser$.valueChanges();
     }
 
     private createUserInDB(): void {

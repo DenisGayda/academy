@@ -23,8 +23,8 @@ describe('ProfilePageComponent', () => {
   beforeEach(async(() => {
   firebaseService = mock<FirebaseService>(FirebaseService);
 
-  when(firebaseService.dataInUsers).thenReturn(of([]));
-  when(firebaseService.getCurrentUserFromDB()).thenReturn(of(new UserInDB('test', 'test@gmail.com', 'test street', '+380973331112')));
+  when(firebaseService.dataInUsers$).thenReturn(of([]));
+  when(firebaseService.getCurrentUserFromDB$()).thenReturn(of(new UserInDB('test', 'test@gmail.com', 'test street', '+380973331112')));
 
   TestBed.configureTestingModule({
       declarations: [ ProfilePageComponent ],

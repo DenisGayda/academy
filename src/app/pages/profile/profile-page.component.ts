@@ -13,7 +13,7 @@ import {Observable} from 'rxjs/internal/Observable';
 export class ProfilePageComponent implements OnInit {
     private _userForm: FormGroup;
     private _hiddenSuccessBlock: boolean;
-    private _userFromDB: Observable<IUser>;
+    private _userFromDB$: Observable<IUser>;
     private _user: IUser;
 
     constructor(private firebaseService: FirebaseService) {
@@ -39,12 +39,12 @@ export class ProfilePageComponent implements OnInit {
         this._hiddenSuccessBlock = value;
     }
 
-    get userFromDB(): Observable<IUser> {
-        return this._userFromDB;
+    get userFromDB$(): Observable<IUser> {
+        return this._userFromDB$;
     }
 
-    set userFromDB(value: Observable<IUser>) {
-        this._userFromDB = value;
+    set userFromDB$(value$: Observable<IUser>) {
+        this._userFromDB$ = value$;
     }
 
     get user(): IUser {
@@ -83,14 +83,14 @@ export class ProfilePageComponent implements OnInit {
     }
 
     public isReady(): boolean {
-        if (this.userFromDB) {
+        if (this.userFromDB$) {
             return true;
         }
 
         if (this.firebaseService.userId) {
-            this.userFromDB = this.firebaseService.getCurrentUserFromDB();
+            this.userFromDB$ = this.firebaseService.getCurrentUserFromDB$();
 
-            this.userFromDB.subscribe(user => {
+            this.userFromDB$.subscribe(user => {
                 if (user) {
                     this.user = new UserInDB(user.name, user.email, user.adress, user.phone, user.photoURL);
                 }

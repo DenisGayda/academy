@@ -19,7 +19,7 @@ describe('TreeComponent', () => {
     beforeEach(async(() => {
         firebaseService = mock<FirebaseService>(FirebaseService);
         dataTreeService = mock<DataTreeService>(DataTreeService);
-        when(firebaseService.dataInDatabase).thenReturn(of([]));
+        when(firebaseService.dataInDatabase$).thenReturn(of([]));
         when(dataTreeService.dataChange).thenReturn(of([]));
         TestBed.configureTestingModule({
             imports: [

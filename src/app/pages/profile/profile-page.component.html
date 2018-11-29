@@ -5,7 +5,7 @@
 <div class="form-container">
     <div *ngIf="isReady()" class="form-container">
         <form class="user-profile-form" [formGroup]="userForm" novalidate (ngSubmit)="updateUserData();" autocomplete="off"
-              *ngIf="this.userFromDB | async as user">
+              *ngIf="this.userFromDB$ | async as user">
             <h1 class="title">Профиль</h1>
             <div class="user-info">
                 <div class="user-image">

@@ -17,7 +17,7 @@ describe('ContentsPageComponent', () => {
     let firebaseService: FirebaseService;
     beforeEach(async(() => {
         firebaseService = mock<FirebaseService>(FirebaseService);
-        when(firebaseService.dataInDatabase).thenReturn(of([]));
+        when(firebaseService.dataInDatabase$).thenReturn(of([]));
         TestBed.configureTestingModule({
             imports: [
                 TreeModule,
